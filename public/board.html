@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>サーバー掲示板</title>
+
+<link id="theme" rel="stylesheet" href="/css/light.css">
+<script src="/script/theme.js" defer></script>
+
+<style>
+body{
+  font-family:"Meiryo",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  margin:0;
+}
+
+nav{
+  background:var(--card);
+  padding:14px 22px;
+  display:flex;
+  align-items:center;
+  border-bottom:1px solid var(--border);
+}
+
+nav a{
+  color:var(--text);
+  text-decoration:none;
+  font-weight:bold;
+  margin-right:18px;
+}
+nav a:hover{ color:var(--accent); }
+
+.container{
+  width:90%;
+  max-width:900px;
+  margin:25px auto;
+}
+
+.post{
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:15px 18px;
+  margin-bottom:18px;
+  border-radius:10px;
+}
+
+.name{ font-weight:bold; }
+.date{ opacity:0.6; font-size:13px; margin-bottom:6px; }
+
+textarea{
+  width:100%;
+  height:90px;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  background:var(--input);
+  color:var(--text);
+}
+
+button{
+  padding:10px 16px;
+  margin-top:10px;
+  border:none;
+  background:var(--accent);
+  color:white;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:bold;
+}
+button:hover{ opacity:0.9; }
+
+.replyBox{
+  margin-left:20px;
+  padding:10px;
+  background:rgba(0,0,0,0.1);
+  border-radius:8px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="/">掲示板一覧</a>
+  <a href="/tests">英検一覧</a>
+  <a href="/ranking">ランキング</a>
+  <button onclick="toggleTheme()" style="margin-left:auto;">🌓 テーマ</button>
+</nav>
+
+<div class="container">
+  <h2 id="serverTitle">サーバー</h2>
+
+  <textarea id="text" placeholder="メッセージを書く"></textarea>
+  <input type="file" id="imageFile" accept="image/*" style="margin-top:8px;">
+  <button onclick="sendPost()">送信</button>
+
+  <div id="posts"></div>
+</div>
+
+
+<script>
+const url = new URL(location.href);
+const serverId = url.searchParams.get("id");
+
+// アイコン一覧
+let userIcons = {};
+
+async function loadUserIcons(){
+  const res = await fetch("/api/user/icons");
+  userIcons = await res.json();
+}
+
+// -----------------------------
+// サーバータイトル反映
+// -----------------------------
+fetch("/api/servers")
+  .then(r => r.json())
+  .then(list => {
+    const s = list.find(x => x.id === serverId);
+    if (s) document.getElementById("serverTitle").innerText = s.name;
+  });
+
+
+// -----------------------------
+// 投稿読み込み（アイコン付き）
+// -----------------------------
+async function loadPosts(){
+  const res = await fetch(`/api/posts/${serverId}`);
+  const posts = await res.json();
+
+  const list = document.getElementById("posts");
+  list.innerHTML = "";
+
+  posts.forEach(p=>{
+    let repliesHTML = "";
+
+    if (p.replies) {
+      p.replies.forEach(r=>{
+        repliesHTML += `
+          <div class="replyBox">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <img src="${userIcons[r.name] || '/icons/default.png'}"
+                   style="width:30px; height:30px; border-radius:50%; object-fit:cover;">
+              <div class="name">${r.name}</div>
+            </div>
+            <div class="date">${r.date}</div>
+            <div>${r.text}</div>
+            <button onclick="deleteReply('${p.id}','${r.id}')">返信削除</button>
+          </div>
+        `;
+      });
+    }
+
+    let imgHTML = "";
+    if (p.image){
+      imgHTML = `<img src="${p.image}"
+             style="max-width:100%; border-radius:8px; margin-top:8px;">`;
+    }
+
+    list.innerHTML += `
+      <div class="post">
+
+        <div style="display:flex; align-items:center; gap:12px;">
+          <img src="${userIcons[p.name] || '/icons/default.png'}"
+               style="width:48px; height:48px; border-radius:50%; object-fit:cover;">
+          <div>
+            <div class="name">${p.name}</div>
+            <div class="date">${p.date}</div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;">${p.text}</div>
+        ${imgHTML}
+
+        <button onclick="deletePost('${p.id}')">削除</button>
+        <button onclick="showReplyBox('${p.id}')">返信</button>
+
+        <div id="reply-${p.id}" style="display:none; margin-top:8px;">
+          <textarea id="replyText-${p.id}" placeholder="返信を書く"></textarea>
+          <button onclick="sendReply('${p.id}')">返信送信</button>
+        </div>
+
+        ${repliesHTML}
+      </div>
+    `;
+  });
+}
+
+
+// -----------------------------
+// 投稿送信
+// -----------------------------
+async function sendPost(){
+  const text = document.getElementById("text").value.trim();
+  const fileInput = document.getElementById("imageFile");
+  let imageURL = null;
+
+  if(!text && fileInput.files.length === 0) return;
+
+  if (fileInput.files.length > 0){
+    const fd = new FormData();
+    fd.append("image", fileInput.files[0]);
+
+    const uploadRes = await fetch("/api/upload", {
+      method: "POST",
+      body: fd
+    });
+    const uploadData = await uploadRes.json();
+
+    if (uploadData.ok){
+      imageURL = uploadData.url;
+    }
+  }
+
+  await fetch(`/api/posts/${serverId}`,{
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body: JSON.stringify({
+      name: localStorage.getItem("username") || "名無し",
+      text,
+      image: imageURL
+    })
+  });
+
+  document.getElementById("text").value = "";
+  fileInput.value = "";
+  loadUserIcons();
+  loadPosts();
+}
+
+
+// -----------------------------
+// 返信送信
+// -----------------------------
+async function sendReply(postId){
+  const txt = document.getElementById(`replyText-${postId}`).value.trim();
+  if(!txt) return;
+
+  await fetch(`/api/posts/reply/${serverId}`, {
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body: JSON.stringify({
+      postId,
+      name: localStorage.getItem("username") || "名無し",
+      text: txt
+    })
+  });
+
+  loadUserIcons();
+  loadPosts();
+}
+
+function showReplyBox(id){
+  document.getElementById("reply-"+id).style.display="block";
+}
+
+
+// -----------------------------
+// 投稿削除
+// -----------------------------
+async function deletePost(id){
+  if(!confirm("本当に削除する？")) return;
+
+  await fetch(`/api/posts/delete/${serverId}`,{
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body:JSON.stringify({ id })
+  });
+
+  loadPosts();
+}
+
+
+// -----------------------------
+// 返信削除
+// -----------------------------
+async function deleteReply(postId, replyId){
+  await fetch(`/api/posts/delete/${serverId}`, {
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body: JSON.stringify({
+      id: postId,
+      replyId
+    })
+  });
+
+  loadPosts();
+}
+
+
+// 初期読み込み
+(async ()=>{
+  await loadUserIcons();
+  await loadPosts();
+})();
+</script>
+
+</body>
+</html>

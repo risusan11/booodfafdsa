@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>フレンド追加</title>
+
+<link id="theme" rel="stylesheet" href="/css/light.css">
+<script src="/script/theme.js" defer></script>
+
+<style>
+body{
+  font-family:"Meiryo",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  margin:0;
+}
+
+nav{
+  background:var(--card);
+  padding:12px 24px;
+  display:flex;
+  align-items:center;
+  border-bottom:1px solid var(--border);
+}
+
+nav a{
+  color:var(--text);
+  text-decoration:none;
+  font-weight:600;
+  margin-right:20px;
+}
+nav a:hover{
+  color:var(--accent);
+}
+
+.container{
+  width:90%;
+  max-width:600px;
+  margin:32px auto;
+}
+
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:12px;
+  border:1px solid var(--border);
+}
+
+input{
+  width:100%;
+  padding:12px;
+  margin-bottom:12px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  background:var(--input);
+  color:var(--text);
+  font-size:15px;
+}
+
+button{
+  padding:10px 16px;
+  background:var(--accent);
+  color:white;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+}
+button:hover{
+  opacity:0.9;
+}
+
+/* ✨ フェードメッセージ */
+#msgBox{
+  opacity:0;
+  margin-top:16px;
+  font-weight:bold;
+  transition: opacity .5s ease;
+  min-height: 22px;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="/">サーバー一覧</a>
+  <a href="/tests.html">英検</a>
+  <a href="/ranking.html">ランキング</a>
+  <a href="/friend.html">フレンド</a>
+
+  <button onclick="toggleTheme()" style="margin-left:auto;">🌓</button>
+</nav>
+
+<div class="container">
+  <h2>＋ フレンド追加</h2>
+
+  <div class="card">
+    <input id="addName" placeholder="ユーザー名を入力" autocomplete="off">
+    <button onclick="addFriend()">フレンド申請を送る</button>
+
+    <!-- ✨ フェードメッセージ -->
+    <div id="msgBox"></div>
+  </div>
+</div>
+
+<script>
+// ================================
+// ✨ フレンド申請（フェード表示付き）
+// ================================
+async function addFriend(){
+  const from = localStorage.getItem("username");
+  const to   = document.getElementById("addName").value.trim();
+  const box  = document.getElementById("msgBox");
+
+  // 一回消して透明に戻す
+  box.style.opacity = 0;
+
+  if (!from){
+    showMsg("※ まずユーザー名を設定してください。", "#e74c3c");
+    return;
+  }
+  if (!to){
+    showMsg("※ 相手のユーザー名を入力してください。", "#e74c3c");
+    return;
+  }
+
+  const res = await fetch("/api/friends/add", {
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body: JSON.stringify({ from, to })
+  });
+
+  const data = await res.json();
+
+  if (data.ok){
+    document.getElementById("addName").value = "";
+    showMsg("✔ フレンド申請を送信しました！", "#2ecc71");
+  } else {
+    showMsg(data.error || "送信できませんでした。", "#e74c3c");
+  }
+}
+
+// ================================
+// ✨ メッセージ表示（ふわっと表示 → 消える）
+// ================================
+function showMsg(text, color){
+  const box = document.getElementById("msgBox");
+
+  box.style.color = color;
+  box.innerText = text;
+
+  // 表示（ふわっと）
+  setTimeout(()=> box.style.opacity = 1, 50);
+
+  // 3秒後にフェードアウト
+  setTimeout(()=> box.style.opacity = 0, 3000);
+}
+</script>
+
+</body>
+</html>

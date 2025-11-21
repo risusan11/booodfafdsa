@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>英検リス級一覧</title>
+
+<!-- テーマ切替 -->
+<link id="theme" rel="stylesheet" href="/css/light.css">
+<script src="/script/theme.js" defer></script>
+
+<style>
+  body {
+    font-family: "Meiryo", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+  }
+
+  nav {
+    background: var(--card);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  nav a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 17px;
+  }
+  nav a:hover {
+    color: var(--accent);
+  }
+
+  .themeBtn {
+    margin-left: auto;
+    padding: 8px 16px;
+    background: var(--accent);
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 36px;
+    margin: 35px 0 10px;
+    color: var(--accent);
+  }
+
+  .subtitle {
+    text-align: center;
+    opacity: 0.8;
+    margin-bottom: 40px;
+  }
+
+  .grid {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 25px 20px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    transition: 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    box-shadow: 0 6px 28px rgba(0,0,0,0.25);
+  }
+
+  .badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: gold;
+    color: black;
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 50px;
+    box-shadow: 0 0 12px rgba(255,215,0,0.6);
+  }
+
+  /* ==================================================
+     🔥 那落迦級（Naraku Card）専用エフェクト ここから
+     ==================================================*/
+
+  .naraku-card {
+    border: 2px solid rgba(255,0,0,0.6) !important;
+    box-shadow: 0 0 30px rgba(255,0,0,0.7) !important;
+    animation: narakuShake 5s infinite ease-in-out;
+  }
+
+  /* ① ゆらめく黒赤背景（炎） */
+  .naraku-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 120%, rgba(255,50,0,0.6), rgba(0,0,0,0.95));
+    animation: narakuFlame 4s infinite linear;
+    z-index: -2;
+    filter: blur(10px);
+  }
+
+  @keyframes narakuFlame {
+    0% { transform: scale(1); opacity:0.6; }
+    50% { transform: scale(1.2); opacity:1; }
+    100% { transform: scale(1); opacity:0.6; }
+  }
+
+  /* ② 火の粉（パーティクル） */
+  .naraku-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><circle cx="10" cy="110" r="2" fill="rgba(255,80,0,0.7)"/><circle cx="60" cy="90" r="1.6" fill="rgba(255,120,0,0.8)"/><circle cx="100" cy="105" r="2.4" fill="rgba(255,60,0,0.7)"/></svg>');
+    background-size: cover;
+    animation: narakuParticles 3s infinite linear;
+    z-index: -1;
+    opacity: 0.6;
+  }
+
+  @keyframes narakuParticles {
+    0% { transform: translateY(10px) scale(1); opacity:0.6; }
+    50% { transform: translateY(-15px) scale(1.2); opacity:1; }
+    100% { transform: translateY(10px) scale(1); opacity:0.6; }
+  }
+
+  /* ③ Hoverで火力UP */
+  .naraku-card:hover {
+    box-shadow: 0 0 45px rgba(255,0,0,1) !important;
+    transform: translateY(-10px) scale(1.03);
+  }
+
+  /* ④ 微振動（Shake）アニメーション */
+  @keyframes narakuShake {
+    0%,100% { transform: translateY(0px); }
+    20% { transform: translateY(-2px); }
+    40% { transform: translateY(1px); }
+    60% { transform: translateY(-1px); }
+    80% { transform: translateY(2px); }
+  }
+
+  /* ==================================================
+     🔥 那落迦級エフェクト ここまで
+     ==================================================*/
+
+</style>
+
+</head>
+<body>
+
+<nav>
+  <a href="/">掲示板</a>
+  <a href="/tests">英検一覧</a>
+  <a href="/ranking">ランキング</a>
+  <button onclick="toggleTheme()" class="themeBtn">🌓 テーマ</button>
+</nav>
+
+<h1 class="title">英検リス級一覧</h1>
+<p class="subtitle">受けたい級を選んで開始！</p>
+
+<div class="grid">
+
+  <div class="card" onclick="location.href='/test_5'">
+    <h2>5 級</h2><p>初級レベル</p>
+  </div>
+
+  <div class="card" onclick="location.href='/test_4'">
+    <h2>4 級</h2><p>基礎レベル</p>
+  </div>
+
+  <div class="card" onclick="location.href='/test_3'">
+    <h2>3 級</h2><p>中学卒業程度</p>
+  </div>
+
+  <div class="card" onclick="location.href='/test_pre2'">
+    <h2>準 2 級</h2><p>高校中級レベル</p>
+  </div>
+
+  <div class="card" onclick="location.href='/test_2'">
+    <h2>2 級</h2><p>高校卒業〜準大学</p>
+  </div>
+
+  <div class="card" onclick="location.href='/test_pre1'">
+    <h2>準 1 級</h2><p>大学中級</p>
+  </div>
+
+  <div class="card" onclick="location.href='/test_1'">
+    <div class="badge">HARD</div>
+    <h2>1 級</h2><p>高度な英語運用能力</p>
+  </div>
+
+  <!-- 🔥 那落迦級（Naraku）カード -->
+  <div class="card naraku-card" onclick="location.href='/test_naraku'">
+    <div class="badge" style="background: crimson; color: white; box-shadow:0 0 12px crimson;">
+      EXTREME
+    </div>
+
+    <div style="font-size:50px; margin-bottom:6px;">🔥</div>
+
+    <h2>那落迦級</h2>
+    <p>英検の概念を超えた領域</p>
+  </div>
+
+</div>
+
+</body>
+</html>

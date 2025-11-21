@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EIKEN Grade 5 Practice Test</title>
+
+<link id="theme" rel="stylesheet" href="/css/light.css">
+<script src="/script/theme.js" defer></script>
+<script src="/script/test_core.js" defer></script>
+
+<style>
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: var(--card);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.question {
+  margin: 18px 0;
+}
+
+/* スクリーンリーダー用 label */
+.label-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 8px;
+  background: var(--input);
+  color: var(--text);
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 30px;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+button:hover { opacity: 0.9; }
+
+.backBtn {
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:10px;
+  background:var(--card);
+  color:var(--text);
+  border:1px solid var(--border);
+  margin:20px 0;
+  font-weight:bold;
+  text-decoration:none;
+  transition:.25s;
+  box-shadow:0 4px 16px rgba(0,0,0,0.25);
+}
+.backBtn:hover {
+  background:var(--accent);
+  color:#fff;
+  transform:translateX(-3px);
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<a href="/tests" class="backBtn">← Back</a>
+
+<h1>EIKEN Grade 5 – Practice Test</h1>
+
+<!-- Part 1 -->
+<h2>Part 1: Vocabulary (10 Questions)</h2>
+
+<div class="question">
+<label for="q1" class="label-hidden">Q1</label>
+1. I ( ____ ) soccer every Sunday.<br>
+<select id="q1">
+  <option></option>
+  <option value="play">play</option>
+  <option value="plays">plays</option>
+  <option value="played">played</option>
+</select>
+</div>
+
+<div class="question">
+<label for="q2" class="label-hidden">Q2</label>
+2. This is my favorite ( ____ ).<br>
+<select id="q2">
+  <option></option>
+  <option value="book">book</option>
+  <option value="look">look</option>
+  <option value="cook">cook</option>
+</select>
+</div>
+
+<div class="question">
+<label for="q3" class="label-hidden">Q3</label>
+3. He ( ____ ) in Tokyo.<br>
+<select id="q3">
+  <option></option>
+  <option value="lives">lives</option>
+  <option value="live">live</option>
+  <option value="living">living</option>
+</select>
+</div>
+
+<div class="question">
+<label for="q4" class="label-hidden">Q4</label>
+4. They ( ____ ) in the park now.<br>
+<select id="q4">
+  <option></option>
+  <option value="are">are</option>
+  <option value="is">is</option>
+  <option value="am">am</option>
+</select>
+</div>
+
+<div class="question">
+<label for="q5" class="label-hidden">Q5</label>
+5. She ( ____ ) to music every day.<br>
+<select id="q5">
+  <option></option>
+  <option value="listens">listens</option>
+  <option value="listen">listen</option>
+  <option value="listening">listening</option>
+</select>
+</div>
+
+<!-- Part 2 -->
+<h2>Part 2: Grammar (5 Questions)</h2>
+
+<div class="question">
+<label for="q6" class="label-hidden">Q6</label>
+6. I want ( ____ ) a doctor.<br>
+<select id="q6">
+  <option></option>
+  <option value="to be">to be</option>
+  <option value="be">be</option>
+  <option value="being">being</option>
+</select>
+</div>
+
+<div class="question">
+<label for="q7" class="label-hidden">Q7</label>
+7. My brother is ( ____ ) than me.<br>
+<select id="q7">
+  <option></option>
+  <option value="bigger">bigger</option>
+  <option value="big">big</option>
+  <option value="biggest">biggest</option>
+</select>
+</div>
+
+<div class="question">
+<label for="q8" class="label-hidden">Q8</label>
+8. There are ( ____ ) apples on the table.<br>
+<select id="q8">
+  <option></option>
+  <option value="many">many</option>
+  <option value="much">much</option>
+  <option value="a">a</option>
+</select>
+</div>
+
+<div class="question">
+<label for="q9" class="label-hidden">Q9</label>
+9. She ( ____ ) English very well.<br>
+<select id="q9">
+  <option></option>
+  <option value="speaks">speaks</option>
+  <option value="speak">speak</option>
+  <option value="speaking">speaking</option>
+</select>
+</div>
+
+<div class="question">
+<label for="q10" class="label-hidden">Q10</label>
+10. I want to ( ____ ) lunch.<br>
+<select id="q10">
+  <option></option>
+  <option value="eat">eat</option>
+  <option value="ate">ate</option>
+  <option value="eating">eating</option>
+</select>
+</div>
+
+<!-- Part 3 -->
+<h2>Part 3: Conversation (5 Questions)</h2>
+
+<div class="question">
+<label for="q11" class="label-hidden">Q11</label>
+11. “( ____ ) is your birthday?”<br>
+<select id="q11">
+  <option></option>
+  <option value="When">When</option>
+  <option value="Where">Where</option>
+  <option value="Who">Who</option>
+</select>
+</div>
+
+<div class="question">
+<label for="q12" class="label-hidden">Q12</label>
+12. “I am good ( ____ ) math.”<br>
+<select id="q12">
+  <option></option>
+  <option value="at">at</option>
+  <option value="in">in</option>
+  <option value="for">for</option>
+</select>
+</div>
+
+<div class="question">
+<label for="q13" class="label-hidden">Q13</label>
+13. “I ( ____ ) a dog yesterday.”<br>
+<select id="q13">
+  <option></option>
+  <option value="saw">saw</option>
+  <option value="see">see</option>
+  <option value="seeing">seeing</option>
+</select>
+</div>
+
+<div class="question">
+<label for="q14" class="label-hidden">Q14</label>
+14. “This is ( ____ ) cat.”<br>
+<select id="q14">
+  <option></option>
+  <option value="my">my</option>
+  <option value="me">me</option>
+  <option value="mine">mine</option>
+</select>
+</div>
+
+<div class="question">
+<label for="q15" class="label-hidden">Q15</label>
+15. “Let’s ( ____ ) soccer!”<br>
+<select id="q15">
+  <option></option>
+  <option value="play">play</option>
+  <option value="played">played</option>
+  <option value="playing">playing</option>
+</select>
+</div>
+
+<!-- Part 4 -->
+<h2>Part 4: Short Reading (5 Questions)</h2>
+
+<b>Passage</b>
+<p>
+My name is Anna. I live in Osaka.<br>
+I like dogs and I have two dogs.<br>
+I walk them every morning before school.
+</p>
+
+<div class="question">
+<label for="q16" class="label-hidden">Q16</label>
+16. Where does Anna live?<br>
+<select id="q16">
+  <option></option>
+  <option value="In Osaka">In Osaka</option>
+  <option value="In Tokyo">In Tokyo</option>
+  <option value="In Fukuoka">In Fukuoka</option>
+</select>
+</div>
+
+<div class="question">
+<label for="q17" class="label-hidden">Q17</label>
+17. How many dogs does Anna have?<br>
+<select id="q17">
+  <option></option>
+  <option value="two">two</option>
+  <option value="one">one</option>
+  <option value="three">three</option>
+</select>
+</div>
+
+<div class="question">
+<label for="q18" class="label-hidden">Q18</label>
+18. When does she walk her dogs?<br>
+<select id="q18">
+  <option></option>
+  <option value="every morning">every morning</option>
+  <option value="at night">at night</option>
+  <option value="after school">after school</option>
+</select>
+</div>
+
+<div class="question">
+<label for="q19" class="label-hidden">Q19</label>
+19. What animals does Anna like?<br>
+<select id="q19">
+  <option></option>
+  <option value="dogs">dogs</option>
+  <option value="cats">cats</option>
+  <option value="birds">birds</option>
+</select>
+</div>
+
+<div class="question">
+<label for="q20" class="label-hidden">Q20</label>
+20. What is Anna’s name?<br>
+<select id="q20">
+  <option></option>
+  <option value="Anna">Anna</option>
+  <option value="Lisa">Lisa</option>
+  <option value="Mika">Mika</option>
+</select>
+</div>
+
+<button onclick="gradeTest5()">Submit</button>
+
+<div id="result" style="margin-top:30px; font-size:20px; font-weight:bold;"></div>
+
+</div>
+</body>
+</html>

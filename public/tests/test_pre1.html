@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EIKEN Pre-1 Practice Test</title>
+
+<link id="theme" rel="stylesheet" href="/css/light.css">
+<script src="/script/theme.js" defer></script>
+<script src="/script/test_core.js" defer></script>
+
+<style>
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: var(--card);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.question {
+  margin: 18px 0;
+  font-size: 18px;
+}
+
+select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 8px;
+  background: var(--input);
+  color: var(--text);
+}
+
+textarea {
+  height: 200px;
+  resize: vertical;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 30px;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+button:hover { opacity: 0.9; }
+
+.backBtn {
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:10px;
+  background:var(--card);
+  color:var(--text);
+  border:1px solid var(--border);
+  margin:20px 0;
+  font-weight:bold;
+  text-decoration:none;
+  transition:.25s;
+  box-shadow:0 4px 16px rgba(0,0,0,0.25);
+}
+.backBtn:hover {
+  background:var(--accent);
+  color:#fff;
+  transform:translateX(-3px);
+  box-shadow:0 0 15px var(--accent);
+}
+</style>
+
+<script>
+if (!localStorage.getItem("username")) location.href = "/login.html";
+</script>
+</head>
+
+<body>
+
+<div class="container">
+
+<a href="/tests" class="backBtn">← Back</a>
+
+<h1>EIKEN Pre-1 – Practice Test</h1>
+
+
+<!-- ======================== -->
+<!-- Part 1 Vocabulary (25) -->
+<!-- ======================== -->
+<h2>Part 1: Vocabulary (25 questions)</h2>
+
+<div class="question">1. The scientist made a ( ____ ) discovery that changed the field.<br>
+<select id="q1">
+<option></option>
+<option value="groundbreaking">groundbreaking</option>
+<option value="fragile">fragile</option>
+<option value="tedious">tedious</option>
+</select></div>
+
+<div class="question">2. The politician tried to ( ____ ) public opinion with emotional speeches.<br>
+<select id="q2">
+<option></option>
+<option value="sway">sway</option>
+<option value="store">store</option>
+<option value="strip">strip</option>
+</select></div>
+
+<div class="question">3. The journalist exposed serious human-rights ( ____ ).<br>
+<select id="q3">
+<option></option>
+<option value="violations">violations</option>
+<option value="vacations">vacations</option>
+<option value="variations">variations</option>
+</select></div>
+
+<div class="question">4. Poor planning could ( ____ ) the entire project.<br>
+<select id="q4">
+<option></option>
+<option value="jeopardize">jeopardize</option>
+<option value="justify">justify</option>
+<option value="simplify">simplify</option>
+</select></div>
+
+<div class="question">5. The new policy aims to ( ____ ) citizens from economic shocks.<br>
+<select id="q5">
+<option></option>
+<option value="insulate">insulate</option>
+<option value="inspire">inspire</option>
+<option value="instinct">instinct</option>
+</select></div>
+
+<div class="question">6. The government must ( ____ ) outdated regulations.<br>
+<select id="q6">
+<option></option>
+<option value="eliminate">eliminate</option>
+<option value="allocate">allocate</option>
+<option value="ignore">ignore</option>
+</select></div>
+
+<div class="question">7. The scandal damaged the company’s ( ____ ).<br>
+<select id="q7">
+<option></option>
+<option value="credibility">credibility</option>
+<option value="celebration">celebration</option>
+<option value="creativity">creativity</option>
+</select></div>
+
+<div class="question">8. Farmers must ( ____ ) water efficiently.<br>
+<select id="q8">
+<option></option>
+<option value="utilize">utilize</option>
+<option value="undergo">undergo</option>
+<option value="undo">undo</option>
+</select></div>
+
+<div class="question">9. Older adults may be more ( ____ ) to online scams.<br>
+<select id="q9">
+<option></option>
+<option value="vulnerable">vulnerable</option>
+<option value="visible">visible</option>
+<option value="valid">valid</option>
+</select></div>
+
+<div class="question">10. The city plans to ( ____ ) new safety measures.<br>
+<select id="q10">
+<option></option>
+<option value="implement">implement</option>
+<option value="impress">impress</option>
+<option value="import">import</option>
+</select></div>
+
+<div class="question">11. The report included several ( ____ ) points worth discussing.<br>
+<select id="q11">
+<option></option>
+<option value="notable">notable</option>
+<option value="neutral">neutral</option>
+<option value="narrow">narrow</option>
+</select></div>
+
+<div class="question">12. Students must ( ____ ) the essay before submitting it.<br>
+<select id="q12">
+<option></option>
+<option value="revise">revise</option>
+<option value="reverse">reverse</option>
+<option value="recycle">recycle</option>
+</select></div>
+
+<div class="question">13. The demonstration ( ____ ) traffic for several hours.<br>
+<select id="q13">
+<option></option>
+<option value="disrupted">disrupted</option>
+<option value="displayed">displayed</option>
+<option value="delivered">delivered</option>
+</select></div>
+
+<div class="question">14. The advertisement was criticized for being ( ____ ).<br>
+<select id="q14">
+<option></option>
+<option value="misleading">misleading</option>
+<option value="missing">missing</option>
+<option value="marvelous">marvelous</option>
+</select></div>
+
+<div class="question">15. Several ( ____ ) species live in the rainforest.<br>
+<select id="q15">
+<option></option>
+<option value="endangered">endangered</option>
+<option value="educated">educated</option>
+<option value="enlarged">enlarged</option>
+</select></div>
+
+<div class="question">16. The professor will ( ____ ) each student’s performance.<br>
+<select id="q16">
+<option></option>
+<option value="evaluate">evaluate</option>
+<option value="elevate">elevate</option>
+<option value="erupt">erupt</option>
+</select></div>
+
+<div class="question">17. The two countries must work together to ( ____ ) the conflict.<br>
+<select id="q17">
+<option></option>
+<option value="resolve">resolve</option>
+<option value="reserve">reserve</option>
+<option value="review">review</option>
+</select></div>
+
+<div class="question">18. The heavy snow will likely ( ____ ) travel delays.<br>
+<select id="q18">
+<option></option>
+<option value="cause">cause</option>
+<option value="call">call</option>
+<option value="cancel">cancel</option>
+</select></div>
+
+<div class="question">19. The shortage of teachers is a serious ( ____ ).<br>
+<select id="q19">
+<option></option>
+<option value="concern">concern</option>
+<option value="concert">concert</option>
+<option value="concept">concept</option>
+</select></div>
+
+<div class="question">20. The school tries to ( ____ ) student creativity.<br>
+<select id="q20">
+<option></option>
+<option value="foster">foster</option>
+<option value="follow">follow</option>
+<option value="fold">fold</option>
+</select></div>
+
+
+<!-- ========================= -->
+<!-- Part 2 Grammar -->
+<!-- ========================= -->
+<h2>Part 2: Grammar (5 questions)</h2>
+
+<div class="question">21. The government should ( ____ ) recycling programs.<br>
+<select id="q21">
+<option></option>
+<option value="promote">promote</option>
+<option value="protect">protect</option>
+<option value="propose">propose</option>
+</select></div>
+
+<div class="question">22. Online classes have ( ____ ) education.<br>
+<select id="q22">
+<option></option>
+<option value="transformed">transformed</option>
+<option value="transported">transported</option>
+<option value="trapped">trapped</option>
+</select></div>
+
+<div class="question">23. The company ( ____ ) its services last year.<br>
+<select id="q23">
+<option></option>
+<option value="expanded">expanded</option>
+<option value="exposed">exposed</option>
+<option value="explored">explored</option>
+</select></div>
+
+<div class="question">24. These policies help ( ____ ) social problems.<br>
+<select id="q24">
+<option></option>
+<option value="address">address</option>
+<option value="adopt">adopt</option>
+<option value="admire">admire</option>
+</select></div>
+
+<div class="question">25. Some chemicals can ( ____ ) the environment.<br>
+<select id="q25">
+<option></option>
+<option value="harm">harm</option>
+<option value="heat">heat</option>
+<option value="heal">heal</option>
+</select></div>
+
+
+<!-- ========================= -->
+<!-- Part 3 Reading -->
+<!-- ========================= -->
+<h2>Part 3: Reading (9 questions)</h2>
+
+<p><b>Passage A</b></p>
+<p>
+A new device has been developed that can collect water from the air in extremely dry environments.  
+It absorbs moisture during the night and releases drinkable water during the day.  
+Engineers hope it will help people living in desert regions.
+</p>
+
+<div class="question">
+26. What does the device collect?<br>
+<select id="q26">
+<option></option>
+<option value="water from the air">water from the air</option>
+<option value="solar energy">solar energy</option>
+<option value="sand">sand</option>
+</select>
+</div>
+
+<div class="question">
+27. Where is the device especially useful?<br>
+<select id="q27">
+<option></option>
+<option value="desert regions">desert regions</option>
+<option value="rainforests">rainforests</option>
+<option value="mountains">mountains</option>
+</select>
+</div>
+
+<div class="question">
+28. What do engineers hope the device will do?<br>
+<select id="q28">
+<option></option>
+<option value="help people get water">help people get water</option>
+<option value="cool cities">cool cities</option>
+<option value="reduce electricity use">reduce electricity use</option>
+</select>
+</div>
+
+
+<p><b>Passage B</b></p>
+<p>
+Recent studies show that people often make poor decisions when experiencing strong emotions.  
+For example, anger can lead to risky behavior, while fear can cause people to avoid necessary actions.  
+Experts say understanding emotions is important for better choices.
+</p>
+
+<div class="question">
+29. According to the passage, what can anger cause?<br>
+<select id="q29">
+<option></option>
+<option value="risky behavior">risky behavior</option>
+<option value="slow learning">slow learning</option>
+<option value="improved memory">improved memory</option>
+</select>
+</div>
+
+<div class="question">
+30. What does fear sometimes make people do?<br>
+<select id="q30">
+<option></option>
+<option value="avoid necessary actions">avoid necessary actions</option>
+<option value="work harder">work harder</option>
+<option value="sleep early">sleep early</option>
+</select>
+</div>
+
+<div class="question">
+31. What do experts say is important?<br>
+<select id="q31">
+<option></option>
+<option value="understanding emotions">understanding emotions</option>
+<option value="avoiding emotions">avoiding emotions</option>
+<option value="ignoring emotions">ignoring emotions</option>
+</select>
+</div>
+
+
+<p><b>Passage C</b></p>
+<p>
+Computer scientists are creating AI systems that can solve complex problems.  
+These systems analyze large amounts of information and learn patterns on their own.  
+However, many researchers warn that AI should always be monitored carefully.
+</p>
+
+<div class="question">
+32. What are AI systems able to do?<br>
+<select id="q32">
+<option></option>
+<option value="solve complex problems">solve complex problems</option>
+<option value="grow food">grow food</option>
+<option value="drive trains">drive trains</option>
+</select>
+</div>
+
+<div class="question">
+33. What do AI systems learn?<br>
+<select id="q33">
+<option></option>
+<option value="patterns">patterns</option>
+<option value="languages">languages</option>
+<option value="musical notes">musical notes</option>
+</select>
+</div>
+
+<div class="question">
+34. What do researchers warn about?<br>
+<select id="q34">
+<option></option>
+<option value="AI must be monitored">AI must be monitored</option>
+<option value="AI will disappear soon">AI will disappear soon</option>
+<option value="AI is harmless">AI is harmless</option>
+</select>
+</div>
+
+
+<!-- ========================= -->
+<!-- Part 4 Writing -->
+<!-- ========================= -->
+<h2>Part 4: Writing (120–150 words)</h2>
+
+<p><b>Question:</b><br>
+Do you think governments should invest more in renewable energy?<br>
+Write 120–150 words.
+</p>
+
+<textarea id="writing"></textarea>
+
+<button onclick="gradePre1()">Submit</button>
+
+<div id="result" style="margin-top:30px; font-size:20px; font-weight:bold;"></div>
+
+</div>
+</body>
+</html>

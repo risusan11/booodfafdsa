@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>プロフィール</title>
+
+<link id="theme" rel="stylesheet" href="/css/light.css">
+<script src="/script/theme.js" defer></script>
+
+<style>
+body{
+  font-family:"Meiryo",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  margin:0;
+}
+
+nav{
+  background:var(--card);
+  padding:12px 24px;
+  display:flex;
+  align-items:center;
+  border-bottom:1px solid var(--border);
+}
+
+nav a{
+  color:var(--text);
+  text-decoration:none;
+  font-weight:600;
+  margin-right:20px;
+}
+nav a:hover{ color:var(--accent); }
+
+.container{
+  width:90%;
+  max-width:700px;
+  margin:32px auto;
+}
+
+.card{
+  background:var(--card);
+  padding:24px;
+  border-radius:14px;
+  border:1px solid var(--border);
+}
+
+#icon{
+  width:128px;
+  height:128px;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+  margin:0 auto 20px auto;
+}
+
+input, textarea{
+  width:100%;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  background:var(--input);
+  color:var(--text);
+  margin-bottom:12px;
+  font-size:15px;
+}
+
+button{
+  padding:10px 16px;
+  border:none;
+  background:var(--accent);
+  color:white;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+}
+button:hover{ opacity:0.9; }
+
+#msg{ margin-top:14px; font-weight:bold; opacity:0; transition:.3s; }
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="/">サーバー一覧</a>
+  <a href="/friend.html">フレンド</a>
+  <a href="/icon_upload.html">アイコン変更</a>
+  <button onclick="toggleTheme()" style="margin-left:auto;">🌓</button>
+</nav>
+
+<div class="container">
+  <h2>プロフィール</h2>
+
+  <div class="card">
+
+    <img id="icon" src="/icons/default.png">
+
+    <label>ユーザー名</label>
+    <input id="username" disabled style="opacity:0.7;">
+
+    <label>自己紹介</label>
+    <textarea id="bio" rows="4" placeholder="自己紹介を書いてください"></textarea>
+
+    <label>アイコン変更</label>
+    <input type="file" id="iconFile" accept="image/*">
+
+    <button onclick="updateProfile()">保存</button>
+
+    <div id="msg"></div>
+  </div>
+</div>
+
+
+<script>
+// ================================
+// プロフィール読み込み
+// ================================
+async function loadProfile(){
+  const user = localStorage.getItem("username");
+  const msg = document.getElementById("msg");
+
+  if(!user){
+    msg.innerHTML = "<span style='color:red;'>※ ユーザー名が設定されていません。</span>";
+    msg.style.opacity = 1;
+    return;
+  }
+
+  document.getElementById("username").value = user;
+
+  const res = await fetch(`/api/user/profile?user=${user}`);
+  const data = await res.json();
+
+  document.getElementById("bio").value  = data.bio  || "";
+  document.getElementById("icon").src   = data.icon || "/icons/default.png";
+}
+
+
+// ================================
+// プロフィール更新
+// ================================
+async function updateProfile(){
+  const user = localStorage.getItem("username");
+  const bio  = document.getElementById("bio").value;
+  const file = document.getElementById("iconFile").files[0];
+  const msg  = document.getElementById("msg");
+
+  msg.style.opacity = 0;
+
+  const fd = new FormData();
+  fd.append("user", user);
+  fd.append("bio", bio);
+  if(file) fd.append("icon", file);
+
+  const res = await fetch("/api/user/profile/update", {
+    method: "POST",
+    body: fd
+  });
+
+  const data = await res.json();
+
+  if(data.ok){
+    msg.innerHTML = "<span style='color:#2ecc71;'>✔ 保存しました！</span>";
+  } else {
+    msg.innerHTML = "<span style='color:red;'>エラーが発生しました</span>";
+  }
+
+  msg.style.opacity = 1;
+  loadProfile(); // 更新後反映
+}
+
+
+// ================================
+loadProfile();
+</script>
+
+</body>
+</html>

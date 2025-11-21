@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>フレンド一覧</title>
+
+<link id="theme" rel="stylesheet" href="/css/light.css">
+<script src="/script/theme.js" defer></script>
+<script src="/socket.io/socket.io.js"></script>
+
+<style>
+body{
+  font-family:"Meiryo",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  margin:0;
+}
+
+nav{
+  background:var(--card);
+  padding:12px 24px;
+  display:flex;
+  align-items:center;
+  border-bottom:1px solid var(--border);
+}
+
+nav a{
+  color:var(--text);
+  text-decoration:none;
+  font-weight:600;
+  margin-right:20px;
+}
+nav a:hover{
+  color:var(--accent);
+}
+
+.container{
+  width:90%;
+  max-width:650px;
+  margin:32px auto;
+}
+
+.card{
+  background:var(--card);
+  padding:16px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  margin-bottom:16px;
+}
+
+.friend-name{
+  font-size:18px;
+  font-weight:bold;
+}
+
+.status-online{
+  color:#2ecc71;
+  font-weight:bold;
+}
+.status-offline{
+  color:#bdc3c7;
+}
+
+button{
+  padding:8px 12px;
+  border:none;
+  color:white;
+  background:var(--accent);
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:600;
+}
+button:hover{ opacity:0.9; }
+
+button.danger{
+  background:#e74c3c;
+}
+
+input{
+  width:100%;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  background:var(--input);
+  color:var(--text);
+  margin-bottom:12px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="/">サーバー一覧</a>
+  <a href="/tests.html">英検</a>
+  <a href="/ranking.html">ランキング</a>
+  <a href="/friend.html">フレンド</a>
+  <a href="/friend_add.html"
+     style="background:var(--accent); color:white; padding:6px 12px; border-radius:6px;">
+    ＋フレンド
+  </a>
+  <button onclick="toggleTheme()" style="margin-left:auto;">🌓</button>
+</nav>
+
+<div class="container">
+
+  <h2>👤 フレンド</h2>
+
+  <!-- 申請が届いている一覧 -->
+  <div class="card">
+    <h3>📨 届いたフレンド申請</h3>
+    <div id="requests"></div>
+  </div>
+
+  <!-- 承認済みフレンド一覧 -->
+  <h3>🤝 フレンド一覧</h3>
+  <div id="friendList"></div>
+</div>
+
+<div id="notifPopup"
+     style="
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        background: var(--card);
+        color: var(--text);
+        padding: 16px 20px;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(20px);
+        transition: opacity .25s ease, transform .25s ease;
+        min-width: 240px;
+        z-index: 9999;">
+</div>
+
+<script>
+// ===============================
+// 🔌 WebSocket
+// ===============================
+const socket = io();
+const username = localStorage.getItem("username");
+if (username) socket.emit("joinUser", username);
+
+socket.on("notification", data => showNotificationPopup(data));
+
+
+// ===============================
+// フレンド一覧ロード
+// ===============================
+async function loadFriends(){
+  const user = localStorage.getItem("username");
+  if (!user) return;
+
+  const res = await fetch(`/api/friends/${user}`);
+  const data = await res.json();
+  
+  const iconsRes = await fetch("/api/user/icons");
+  const userIcons = await iconsRes.json();
+
+  const friendBox  = document.getElementById("friendList");
+  const requestBox = document.getElementById("requests");
+
+  friendBox.innerHTML = "";
+  requestBox.innerHTML = "";
+
+  // ========== 届いた申請 ==========
+  if (data.requests.length === 0){
+    requestBox.innerHTML = "<p>申請はありません。</p>";
+  } else {
+    data.requests.forEach(from =>{
+      requestBox.innerHTML += `
+        <div style="padding:6px 0;">
+          <b>${from}</b> からフレンド申請  
+          <button onclick="accept('${from}')">承認</button>
+          <button class="danger" onclick="deny('${from}')">拒否</button>
+        </div>
+      `;
+    });
+  }
+
+  // ========== フレンド一覧 ==========
+  if (data.friends.length === 0){
+    friendBox.innerHTML = "<p>フレンドはいません。</p>";
+  } else {
+    data.friends.forEach(f=>{
+      const online = data.online?.includes(f);
+
+      friendBox.innerHTML += `
+<div class="card">
+  <div style="display:flex; align-items:center; gap:12px;">
+    <img src="${userIcons[f]}" 
+         style="width:40px; height:40px; border-radius:50%; object-fit:cover;">
+    <div class="friend-name">${f}</div>
+  </div>
+
+  <div class="${online ? 'status-online' : 'status-offline'}">
+    ${online ? "● オンライン" : "● オフライン"}
+  </div>
+
+  <button class="danger" style="margin-top:8px;"
+          onclick="removeFriend('${f}')">削除</button>
+</div>
+
+      `;
+    });
+  }
+}
+
+
+// ===============================
+// 承認
+// ===============================
+async function accept(from){
+  const to = localStorage.getItem("username");
+
+  await fetch("/api/friends/accept", {
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body: JSON.stringify({ from, to })
+  });
+
+  loadFriends();
+}
+
+
+// ===============================
+// 拒否
+// ===============================
+async function deny(from){
+  const to = localStorage.getItem("username");
+
+  await fetch("/api/friends/deny", {
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body: JSON.stringify({ from, to })
+  });
+
+  loadFriends();
+}
+
+
+// ===============================
+// 削除（解除）
+// ===============================
+async function removeFriend(target){
+  const user = localStorage.getItem("username");
+
+  await fetch("/api/friends/remove", {
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body: JSON.stringify({ user, target })
+  });
+
+  loadFriends();
+}
+
+
+// ===============================
+// 🔔 通知ポップアップ
+// ===============================
+function showNotificationPopup(notif){
+  const box = document.getElementById("notifPopup");
+
+  let msg = "";
+  if (notif.type === "friend"){
+    msg = `${notif.from} からフレンド申請`;
+  } else {
+    msg = notif.msg || "通知があります";
+  }
+
+  box.innerText = "🔔 " + msg;
+  box.style.opacity = "1";
+  box.style.transform = "translateY(0)";
+
+  setTimeout(()=>{
+    box.style.opacity = "0";
+    box.style.transform = "translateY(20px)";
+  }, 3000);
+}
+
+loadFriends();
+</script>
+
+</body>
+</html>

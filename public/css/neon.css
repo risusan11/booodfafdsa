@@ -1,0 +1,20 @@
+:root {
+  --bg: #06060e;
+  --card: #0d0f20;
+  --text: #d6d7ff;
+  --accent: #00f6ff;
+  --glow: 0 0 15px rgba(0,255,255,0.5);
+  --border: rgba(0,255,255,0.3);
+}
+
+body {
+  background: radial-gradient(circle at 20% 20%, #0b0f29, #06060e);
+  color: var(--text);
+  text-shadow: 0 0 4px rgba(0,255,255,0.2);
+  transition: 0.25s;
+}
+
+nav, .post, .reply {
+  box-shadow: 0 0 18px rgba(0,255,255,0.2);
+  border: 1px solid var(--border);
+}

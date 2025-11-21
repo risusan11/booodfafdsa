@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EIKEN Grade 3 Practice Test</title>
+
+<link id="theme" rel="stylesheet" href="/css/light.css">
+<script src="/script/theme.js" defer></script>
+<script src="/script/test_core.js" defer></script>
+
+<style>
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: var(--card);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.question {
+  margin: 18px 0;
+}
+
+select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 8px;
+  font-size: 16px;
+  background: var(--input);
+  color: var(--text);
+}
+
+textarea {
+  height: 160px;
+  resize: vertical;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 30px;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.backBtn {
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:10px;
+  background:var(--card);
+  color:var(--text);
+  border:1px solid var(--border);
+  margin:20px 0;
+  font-weight:bold;
+  text-decoration:none;
+  transition:.25s;
+  box-shadow:0 4px 16px rgba(0,0,0,0.25);
+}
+.backBtn:hover {
+  background:var(--accent);
+  color:#fff;
+  transform:translateX(-3px);
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<a href="/tests" class="backBtn">← Back</a>
+
+<h1>EIKEN Grade 3 – Practice Test</h1>
+
+
+<!-- =====================================================
+PART 1: Vocabulary / Grammar
+===================================================== -->
+<h2>Part 1: Vocabulary & Grammar (20 Questions)</h2>
+
+<div class="question">
+1. Ken ( ____ ) to school by bicycle every day.<br>
+<select id="q1">
+  <option></option>
+  <option value="goes">goes</option>
+  <option value="go">go</option>
+  <option value="going">going</option>
+</select>
+</div>
+
+<div class="question">
+2. I have ( ____ ) homework today.<br>
+<select id="q2">
+  <option></option>
+  <option value="some">some</option>
+  <option value="any">any</option>
+  <option value="much">much</option>
+</select>
+</div>
+
+<div class="question">
+3. This book is ( ____ ) than that one.<br>
+<select id="q3">
+  <option></option>
+  <option value="more interesting">more interesting</option>
+  <option value="interesting">interesting</option>
+  <option value="most interesting">most interesting</option>
+</select>
+</div>
+
+<div class="question">
+4. I ( ____ ) a movie last night.<br>
+<select id="q4">
+  <option></option>
+  <option value="watched">watched</option>
+  <option value="watch">watch</option>
+  <option value="watching">watching</option>
+</select>
+</div>
+
+<div class="question">
+5. My mother is ( ____ ) dinner now.<br>
+<select id="q5">
+  <option></option>
+  <option value="cooking">cooking</option>
+  <option value="cook">cook</option>
+  <option value="cooked">cooked</option>
+</select>
+</div>
+
+<div class="question">
+6. “Can I help you?” — “Yes, ( ____ ), please.”<br>
+<select id="q6">
+  <option></option>
+  <option value="I'd like some water">I'd like some water</option>
+  <option value="I’m watching TV">I’m watching TV</option>
+  <option value="I don't know him">I don't know him</option>
+</select>
+</div>
+
+<div class="question">
+7. There are ( ____ ) students in the classroom.<br>
+<select id="q7">
+  <option></option>
+  <option value="a lot of">a lot of</option>
+  <option value="much">much</option>
+  <option value="few">few</option>
+</select>
+</div>
+
+<div class="question">
+8. It is important ( ____ ) breakfast.<br>
+<select id="q8">
+  <option></option>
+  <option value="to eat">to eat</option>
+  <option value="eat">eat</option>
+  <option value="eating">eating</option>
+</select>
+</div>
+
+<div class="question">
+9. “Why are you late?” — “Because the bus ( ____ ).”<br>
+<select id="q9">
+  <option></option>
+  <option value="was late">was late</option>
+  <option value="is late">is late</option>
+  <option value="will be late">will be late</option>
+</select>
+</div>
+
+<div class="question">
+10. My sister ( ____ ) English for two years.<br>
+<select id="q10">
+  <option></option>
+  <option value="has studied">has studied</option>
+  <option value="studied">studied</option>
+  <option value="studies">studies</option>
+</select>
+</div>
+
+
+<!-- =====================================================
+PART 2: Conversation
+===================================================== -->
+<h2>Part 2: Conversation (5 Questions)</h2>
+
+<div class="question">
+11. “What’s your favorite subject?” — “____.”<br>
+<select id="q11">
+  <option></option>
+  <option value="English">English</option>
+  <option value="At school">At school</option>
+  <option value="I'm fine">I'm fine</option>
+</select>
+</div>
+
+<div class="question">
+12. “How did you come here?” — “____.”<br>
+<select id="q12">
+  <option></option>
+  <option value="By train">By train</option>
+  <option value="I like music">I like music</option>
+  <option value="Yes, I did">Yes, I did</option>
+</select>
+</div>
+
+<div class="question">
+13. “Can you help me?” — “____.”<br>
+<select id="q13">
+  <option></option>
+  <option value="Sure">Sure</option>
+  <option value="Good night">Good night</option>
+  <option value="I don't know">I don't know</option>
+</select>
+</div>
+
+<div class="question">
+14. “Where do you want to go this weekend?” — “____.”<br>
+<select id="q14">
+  <option></option>
+  <option value="To the zoo">To the zoo</option>
+  <option value="Yes, please">Yes, please</option>
+  <option value="I'm twelve">I'm twelve</option>
+</select>
+</div>
+
+<div class="question">
+15. “See you later.” — “____.”<br>
+<select id="q15">
+  <option></option>
+  <option value="See you">See you</option>
+  <option value="Good morning">Good morning</option>
+  <option value="I'm OK">I'm OK</option>
+</select>
+</div>
+
+
+<!-- =====================================================
+PART 3: Reading (10 Questions)
+===================================================== -->
+
+<h2>Part 3: Reading (10 Questions)</h2>
+
+<b>Passage A</b>
+<p>
+Tom plays basketball after school three times a week.  
+He practices with his friends at the gym.  
+He wants to join the school team next year.
+</p>
+
+<div class="question">
+16. How often does Tom play basketball?<br>
+<select id="q16">
+  <option></option>
+  <option value="three times a week">three times a week</option>
+  <option value="every day">every day</option>
+  <option value="once a week">once a week</option>
+</select>
+</div>
+
+<div class="question">
+17. Where does Tom practice?<br>
+<select id="q17">
+  <option></option>
+  <option value="at the gym">at the gym</option>
+  <option value="in the park">in the park</option>
+  <option value="at home">at home</option>
+</select>
+</div>
+
+<div class="question">
+18. What does Tom want to do next year?<br>
+<select id="q18">
+  <option></option>
+  <option value="join the school team">join the school team</option>
+  <option value="study abroad">study abroad</option>
+  <option value="play the piano">play the piano</option>
+</select>
+</div>
+
+
+<b>Passage B</b>
+<p>
+Lisa likes cooking. She makes breakfast for her family every weekend.  
+She wants to learn how to make more dishes, so she watches cooking videos online.
+</p>
+
+<div class="question">
+19. What does Lisa do every weekend?<br>
+<select id="q19">
+  <option></option>
+  <option value="makes breakfast">makes breakfast</option>
+  <option value="goes to school">goes to school</option>
+  <option value="plays basketball">plays basketball</option>
+</select>
+</div>
+
+<div class="question">
+20. What does Lisa want to learn?<br>
+<select id="q20">
+  <option></option>
+  <option value="new dishes">new dishes</option>
+  <option value="math">math</option>
+  <option value="English">English</option>
+</select>
+</div>
+
+<div class="question">
+21. How does Lisa learn cooking?<br>
+<select id="q21">
+  <option></option>
+  <option value="by watching videos">by watching videos</option>
+  <option value="by reading books">by reading books</option>
+  <option value="by taking lessons">by taking lessons</option>
+</select>
+</div>
+
+
+<b>Passage C</b>
+<p>
+Ken has a part-time job at a supermarket.  
+He works there on Saturdays and Sundays.  
+He likes talking to customers and wants to work there full-time in the future.
+</p>
+
+<div class="question">
+22. When does Ken work?<br>
+<select id="q22">
+  <option></option>
+  <option value="on weekends">on weekends</option>
+  <option value="every day">every day</option>
+  <option value="only on Sunday">only on Sunday</option>
+</select>
+</div>
+
+<div class="question">
+23. What does Ken like about his job?<br>
+<select id="q23">
+  <option></option>
+  <option value="talking to customers">talking to customers</option>
+  <option value="cleaning the store">cleaning the store</option>
+  <option value="lifting boxes">lifting boxes</option>
+</select>
+</div>
+
+<div class="question">
+24. What does Ken want to do in the future?<br>
+<select id="q24">
+  <option></option>
+  <option value="work full-time">work full-time</option>
+  <option value="move abroad">move abroad</option>
+  <option value="become a singer">become a singer</option>
+</select>
+</div>
+
+
+<!-- =====================================================
+PART 4: Writing
+===================================================== -->
+<h2>Part 4: Writing (25–35 words)</h2>
+
+<p><b>Question:</b><br>
+Do you think students should have homework every day? Write 25–35 words.
+</p>
+
+<textarea id="writing"></textarea>
+
+
+<button onclick="gradeTest3()">Submit</button>
+
+<div id="result" style="margin-top:30px; font-size:20px; font-weight:bold;"></div>
+
+</div>
+</body>
+</html>

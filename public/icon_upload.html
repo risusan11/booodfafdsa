@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>アイコン変更</title>
+
+<link id="theme" rel="stylesheet" href="/css/light.css">
+<script src="/script/theme.js" defer></script>
+
+<style>
+body{
+  font-family:"Meiryo",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  margin:0;
+}
+
+nav{
+  background:var(--card);
+  padding:12px 24px;
+  display:flex;
+  align-items:center;
+  border-bottom:1px solid var(--border);
+}
+
+nav a{
+  color:var(--text);
+  text-decoration:none;
+  font-weight:600;
+  margin-right:20px;
+}
+nav a:hover{
+  color:var(--accent);
+}
+
+.container{
+  width:90%;
+  max-width:600px;
+  margin:32px auto;
+}
+
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  text-align:center;
+}
+
+#preview{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:16px;
+}
+
+button{
+  padding:10px 16px;
+  background:var(--accent);
+  color:white;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+}
+button:hover{ opacity:0.9; }
+
+#msg{ margin-top:16px; font-weight:bold; opacity:0; transition:.3s; }
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="/">サーバー一覧</a>
+  <a href="/friend.html">フレンド</a>
+  <a href="/icon_upload.html"
+     style="background:var(--accent); color:white; padding:6px 12px; border-radius:6px;">
+     アイコン変更
+  </a>
+  <button onclick="toggleTheme()" style="margin-left:auto;">🌓</button>
+</nav>
+
+<div class="container">
+  <h2>プロフィールアイコン変更</h2>
+
+  <div class="card">
+    <img id="preview" src="/icons/default.png">
+
+    <input type="file" id="iconFile" accept="image/*">
+
+    <button onclick="uploadIcon()">アップロード</button>
+
+    <div id="msg"></div>
+  </div>
+</div>
+
+<script>
+// プレビュー
+document.getElementById("iconFile").addEventListener("change", e=>{
+  const file = e.target.files[0];
+  if(file){
+    document.getElementById("preview").src = URL.createObjectURL(file);
+  }
+});
+
+// 上传
+async function uploadIcon(){
+  const user = localStorage.getItem("username");
+  const file = document.getElementById("iconFile").files[0];
+  const msg = document.getElementById("msg");
+
+  msg.style.opacity = 0;
+
+  if(!user){
+    msg.innerHTML = "<span style='color:red;'>※ まずユーザー名を設定してください</span>";
+    msg.style.opacity = 1;
+    return;
+  }
+  if(!file){
+    msg.innerHTML = "<span style='color:red;'>※ ファイルを選択してください</span>";
+    msg.style.opacity = 1;
+    return;
+  }
+
+  const fd = new FormData();
+  fd.append("icon", file);
+  fd.append("user", user);
+
+  const res = await fetch("/api/user/icon", {
+    method:"POST",
+    body: fd
+  });
+  const data = await res.json();
+
+  if(data.ok){
+    msg.innerHTML = "<span style='color:#2ecc71;'>✔ アイコンを更新しました！</span>";
+  } else {
+    msg.innerHTML = "<span style='color:red;'>エラーが発生しました</span>";
+  }
+
+  msg.style.opacity = 1;
+}
+</script>
+
+</body>
+</html>

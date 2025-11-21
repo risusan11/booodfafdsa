@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Eiken Risu grade test</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #f4f7fa;
+}
+header {
+  background: #161e31;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+section {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+h2 {
+  border-left: 6px solid #3b6ef5;
+  padding-left: 10px;
+}
+button {
+  background: #3b6ef5;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 16px;
+}
+button:hover {
+  background: #2853c4;
+}
+textarea {
+  width: 100%;
+  height: 120px;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 15px;
+}
+.question {
+  margin: 15px 0;
+}
+.result {
+  background: #eaf1ff;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 6px;
+  display: none;
+}
+.back {
+  margin-top: 20px;
+  display: inline-block;
+}
+</style>
+</head>
+
+<body>
+<header>
+  <h1>Eiken Risu grade test</h1>
+</header>
+
+<section id="test">
+  <h2>Part 1：Vocabulary</h2>
+
+  <div class="question">
+    1. The scientist tried to ____ the impact of the new virus.<br>
+    <select id="q1">
+      <option value="">選択</option>
+      <option value="mitigate">mitigate</option>
+      <option value="flourish">flourish</option>
+      <option value="distort">distort</option>
+    </select>
+  </div>
+
+  <div class="question">
+    2. Teenagers often ____ to the opinions of peers.<br>
+    <select id="q2">
+      <option value="">選択</option>
+      <option value="conform">conform</option>
+      <option value="tremble">tremble</option>
+      <option value="harvest">harvest</option>
+    </select>
+  </div>
+
+  <h2>Part 2：Reading</h2>
+
+  <p>
+    <b>Reading Passage:</b><br>
+    Modern schools emphasize collaboration. While cooperation helps communication,
+    some educators say it reduces independent thinking. Students relying on group
+    decisions may fail to judge information alone. Balance between group and
+    personal study is essential.
+  </p>
+
+  <div class="question">
+    3. Why do some educators criticize collaboration?<br>
+    <select id="q3">
+      <option value="">選択</option>
+      <option value="A">Creates competition</option>
+      <option value="B">Reduces independent thinking</option>
+      <option value="C">Increases pressure</option>
+    </select>
+  </div>
+
+  <h2>Part 3：Writing</h2>
+  <p>Write 40–60 words: <b>Do you think AI should replace some school assignments?</b></p>
+  <textarea id="writing"></textarea>
+
+  <button onclick="grade()">採点する</button>
+
+  <div class="result" id="resultBox"></div>
+
+  <a href="/" class="back">← 掲示板に戻る</a>
+</section>
+
+<script>
+function grade() {
+  let score = 0;
+
+  if (document.getElementById("q1").value === "mitigate") score++;
+  if (document.getElementById("q2").value === "conform") score++;
+  if (document.getElementById("q3").value === "B") score++;
+
+  let writing = document.getElementById("writing").value.trim();
+  let wc = writing.split(/\s+/).filter(x => x).length;
+
+  let writingScore = 0;
+  if (wc >= 40 && wc <= 60) writingScore = 4;
+
+  score += writingScore;
+
+  document.getElementById("resultBox").style.display = "block";
+  document.getElementById("resultBox").innerHTML =
+    `<h3>結果</h3>
+    <p><b>総合スコア: ${score} / 7</b></p>
+    <p>語彙2・読解1・作文4</p>
+    <p>作文語数: ${wc} words</p>`;
+}
+
+// ユーザー名取得
+const username = localStorage.getItem("username") || "Unknown";
+
+// サーバーへスコア保存
+fetch("/api/saveScore", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    name: username,
+    level: "Risu",
+    score: score,
+    details: {
+      vocabulary: (document.getElementById("q1").value === "mitigate" ? 1 : 0)
+               + (document.getElementById("q2").value === "conform" ? 1 : 0),
+      reading: (document.getElementById("q3").value === "B" ? 1 : 0),
+      writing: writingScore
+    }
+  })
+});
+
+</script>
+
+</body>
+</html>

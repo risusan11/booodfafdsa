@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EIKEN Grade 1 Practice Test</title>
+
+<link id="theme" rel="stylesheet" href="/css/light.css">
+<script src="/script/theme.js" defer></script>
+<script src="/script/test_core.js" defer></script>
+
+<style>
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: var(--card);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+.question {
+  margin: 18px 0;
+  font-size: 18px;
+}
+
+select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 8px;
+  background: var(--input);
+  color: var(--text);
+  font-size: 16px;
+}
+
+textarea {
+  resize: vertical;
+  height: 240px;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 30px;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+}
+button:hover { opacity: 0.9; }
+
+.backBtn {
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:10px;
+  background:var(--card);
+  color:var(--text);
+  border:1px solid var(--border);
+  margin:20px 0;
+  font-weight:bold;
+  text-decoration:none;
+  transition:.25s;
+  box-shadow:0 4px 16px rgba(0,0,0,0.25);
+}
+.backBtn:hover {
+  background:var(--accent);
+  color:#fff;
+  transform:translateX(-3px);
+  box-shadow:0 0 15px var(--accent);
+}
+</style>
+
+<script>
+if (!localStorage.getItem("username")) location.href = "/login.html";
+</script>
+</head>
+
+
+<body>
+
+<div class="container">
+
+<a href="/tests" class="backBtn">← 戻る</a>
+
+<h1>EIKEN Grade 1 – Practice Test</h1>
+
+
+
+<!-- ============================ -->
+<!-- Part 1 Vocabulary (25) -->
+<!-- ============================ -->
+<h2>Part 1: Vocabulary (25 questions)</h2>
+
+<div class="question">
+1. The professor argued that economic inequality is an ( ____ ) force that is reshaping modern democracies.<br>
+<select id="q1">
+<option></option>
+<option value="inexorable">inexorable</option>
+<option value="mundane">mundane</option>
+<option value="incipient">incipient</option>
+</select>
+</div>
+
+<div class="question">
+2. Researchers attempted to ( ____ ) the two theories to reveal deeper conceptual parallels.<br>
+<select id="q2">
+<option></option>
+<option value="juxtapose">juxtapose</option>
+<option value="eradicate">eradicate</option>
+<option value="conserve">conserve</option>
+</select>
+</div>
+
+<div class="question">
+3. The issue is far more ( ____ ) than most politicians acknowledge.<br>
+<select id="q3">
+<option></option>
+<option value="convoluted">convoluted</option>
+<option value="coherent">coherent</option>
+<option value="docile">docile</option>
+</select>
+</div>
+
+<div class="question">
+4. Excessive data collection may ( ____ ) public distrust toward institutions.<br>
+<select id="q4">
+<option></option>
+<option value="exacerbate">exacerbate</option>
+<option value="subdue">subdue</option>
+<option value="ameliorate">ameliorate</option>
+</select>
+</div>
+
+<div class="question">
+5. The philosopher presented an ethical ( ____ ) regarding AI autonomy.<br>
+<select id="q5">
+<option></option>
+<option value="conundrum">conundrum</option>
+<option value="sentiment">sentiment</option>
+<option value="adornment">adornment</option>
+</select>
+</div>
+
+<div class="question">
+6. Her argument was dismissed as ( ____ ), lacking any empirical foundation.<br>
+<select id="q6">
+<option></option>
+<option value="specious">specious</option>
+<option value="lucid">lucid</option>
+<option value="forthright">forthright</option>
+</select>
+</div>
+
+<div class="question">
+7. The scientist proposed a ( ____ ) framework for analyzing human cognition.<br>
+<select id="q7">
+<option></option>
+<option value="paradigmatic">paradigmatic</option>
+<option value="rudimentary">rudimentary</option>
+<option value="banal">banal</option>
+</select>
+</div>
+
+<div class="question">
+8. The activist delivered a ( ____ ) critique of corporate environmental policies.<br>
+<select id="q8">
+<option></option>
+<option value="scathing">scathing</option>
+<option value="decorous">decorous</option>
+<option value="lenient">lenient</option>
+</select>
+</div>
+
+<div class="question">
+9. The species survived due to its remarkable ability to ( ____ ) harsh climates.<br>
+<select id="q9">
+<option></option>
+<option value="withstand">withstand</option>
+<option value="succumb">succumb</option>
+<option value="evade">evade</option>
+</select>
+</div>
+
+<div class="question">
+10. His theory was considered ( ____ ) and ahead of its time.<br>
+<select id="q10">
+<option></option>
+<option value="prescient">prescient</option>
+<option value="derivative">derivative</option>
+<option value="morose">morose</option>
+</select>
+</div>
+
+<div class="question">
+11. The company’s attempt to hide data breaches was widely condemned as ( ____ ).<br>
+<select id="q11">
+<option></option>
+<option value="deplorable">deplorable</option>
+<option value="laudable">laudable</option>
+<option value="cursory">cursory</option>
+</select>
+</div>
+
+<div class="question">
+12. The ancient ruins were so ( ____ ) that even experts struggled to interpret them.<br>
+<select id="q12">
+<option></option>
+<option value="enigmatic">enigmatic</option>
+<option value="tedious">tedious</option>
+<option value="palpable">palpable</option>
+</select>
+</div>
+
+<div class="question">
+13. Scientists warn that unchecked industrial activity could ( ____ ) fragile ecosystems.<br>
+<select id="q13">
+<option></option>
+<option value="decimate">decimate</option>
+<option value="fortify">fortify</option>
+<option value="revitalize">revitalize</option>
+</select>
+</div>
+
+<div class="question">
+14. The professor emphasized the ( ____ ) nature of cultural identity.<br>
+<select id="q14">
+<option></option>
+<option value="fluid">fluid</option>
+<option value="static">static</option>
+<option value="inert">inert</option>
+</select>
+</div>
+
+<div class="question">
+15. The committee reached a ( ____ ) decision despite initial disagreements.<br>
+<select id="q15">
+<option></option>
+<option value="unanimous">unanimous</option>
+<option value="arbitrary">arbitrary</option>
+<option value="tentative">tentative</option>
+</select>
+</div>
+
+<div class="question">
+16. The diplomat handled the negotiations with great ( ____ ).<br>
+<select id="q16">
+<option></option>
+<option value="tact">tact</option>
+<option value="candor">candor</option>
+<option value="folly">folly</option>
+</select>
+</div>
+
+<div class="question">
+17. The scientist’s explanation was so ( ____ ) that even experts were confused.<br>
+<select id="q17">
+<option></option>
+<option value="opaque">opaque</option>
+<option value="vivid">vivid</option>
+<option value="succinct">succinct</option>
+</select>
+</div>
+
+<div class="question">
+18. Many governments struggle to ( ____ ) misinformation online.<br>
+<select id="q18">
+<option></option>
+<option value="combat">combat</option>
+<option value="propagate">propagate</option>
+<option value="endorse">endorse</option>
+</select>
+</div>
+
+<div class="question">
+19. His writing style is known for its ( ____ ) rhythm and striking imagery.<br>
+<select id="q19">
+<option></option>
+<option value="lyrical">lyrical</option>
+<option value="sterile">sterile</option>
+<option value="cumbersome">cumbersome</option>
+</select>
+</div>
+
+<div class="question">
+20. The proposal was rejected because it was considered ( ____ ) and unrealistic.<br>
+<select id="q20">
+<option></option>
+<option value="untenable">untenable</option>
+<option value="salient">salient</option>
+<option value="tangible">tangible</option>
+</select>
+</div>
+
+<div class="question">
+21. The regime attempted to ( ____ ) dissent through censorship.<br>
+<select id="q21">
+<option></option>
+<option value="quell">quell</option>
+<option value="invoke">invoke</option>
+<option value="compile">compile</option>
+</select>
+</div>
+
+<div class="question">
+22. The author offered a ( ____ ) analysis of economic globalization.<br>
+<select id="q22">
+<option></option>
+<option value="meticulous">meticulous</option>
+<option value="superficial">superficial</option>
+<option value="erratic">erratic</option>
+</select>
+</div>
+
+<div class="question">
+23. Advances in biotechnology have sparked ( ____ ) debates about human enhancement.<br>
+<select id="q23">
+<option></option>
+<option value="profound">profound</option>
+<option value="trivial">trivial</option>
+<option value="benign">benign</option>
+</select>
+</div>
+
+<div class="question">
+24. The CEO was forced to resign after a series of ( ____ ) decisions.<br>
+<select id="q24">
+<option></option>
+<option value="imprudent">imprudent</option>
+<option value="astute">astute</option>
+<option value="benevolent">benevolent</option>
+</select>
+</div>
+
+<div class="question">
+25. Many experts emphasize the ( ____ ) relationship between culture and technology.<br>
+<select id="q25">
+<option></option>
+<option value="intertwined">intertwined</option>
+<option value="detached">detached</option>
+<option value="obsolete">obsolete</option>
+</select>
+</div>
+
+
+
+<!-- ============================ -->
+<!-- Part 2: 長文空所補充 -->
+<!-- ============================ -->
+<h2>Part 2: Cloze (6 questions)</h2>
+
+<p>
+As digital technologies continue to reshape human behavior, scholars warn that  
+certain cognitive abilities may be gradually diminishing. While access to unlimited  
+information appears beneficial, it may also ( ____ )(q26) individuals’ capacity for  
+deep concentration. Some studies suggest that constant information switching  
+reduces the brain’s ability to engage in sustained analytical thinking.  
+
+Furthermore, social networks encourage brief and simplified communication,  
+which may diminish the nuance traditionally found in longer discourse.  
+This shift poses a challenge for educators attempting to foster  
+critical thinking in students. To address this, institutions must  
+( ____ )(q27) environments where long-form reasoning is actively practiced  
+and rewarded.  
+
+Nevertheless, technology also provides innovative tools that can enhance  
+understanding when used carefully. The real challenge is to  
+( ____ )(q28) the benefits of digital media while minimizing its drawbacks.  
+</p>
+
+<div class="question">
+26. ( ____ )<br>
+<select id="q26">
+<option></option>
+<option value="erode">erode</option>
+<option value="consolidate">consolidate</option>
+<option value="cultivate">cultivate</option>
+</select>
+</div>
+
+<div class="question">
+27. ( ____ )<br>
+<select id="q27">
+<option></option>
+<option value="cultivate">cultivate</option>
+<option value="neglect">neglect</option>
+<option value="invalidate">invalidate</option>
+</select>
+</div>
+
+<div class="question">
+28. ( ____ )<br>
+<select id="q28">
+<option></option>
+<option value="reconcile">reconcile</option>
+<option value="obscure">obscure</option>
+<option value="replicate">replicate</option>
+</select>
+</div>
+
+
+
+<!-- ============================ -->
+<!-- Part 3: 読解 -->
+<!-- ============================ -->
+<h2>Part 3: Reading (12 questions)</h2>
+
+<p><b>Passage A</b></p>
+<p>
+In recent years, anthropologists have challenged the long-held belief  
+that early human societies were strictly hierarchical. Instead,  
+new archaeological evidence suggests that many prehistoric groups  
+were surprisingly egalitarian, with decision-making shared among  
+members rather than concentrated in a ruling elite.  
+This discovery reshapes our understanding of political evolution  
+and suggests that hierarchy may have developed much later  
+and more gradually than previously assumed.
+</p>
+
+<div class="question">
+29. What does the new evidence suggest?<br>
+<select id="q29">
+<option></option>
+<option value="early societies were egalitarian">early societies were egalitarian</option>
+<option value="all early societies had kings">all early societies had kings</option>
+<option value="prehistoric groups avoided cooperation">prehistoric groups avoided cooperation</option>
+</select>
+</div>
+
+<div class="question">
+30. What belief is being challenged?<br>
+<select id="q30">
+<option></option>
+<option value="that early societies were hierarchical">that early societies were hierarchical</option>
+<option value="that people had tools">that people had tools</option>
+<option value="that cooperation existed">that cooperation existed</option>
+</select>
+</div>
+
+
+
+<p><b>Passage B</b></p>
+<p>
+As artificial intelligence becomes more sophisticated,  
+a growing concern is whether machines might eventually  
+make moral decisions autonomously. While AI currently  
+follows programmed rules, the possibility of emergent  
+ethical behavior raises complex questions.  
+If a machine can evaluate moral trade-offs,  
+should it be treated as an entity with responsibilities,  
+or merely as a tool?  
+This dilemma complicates regulatory debates worldwide.
+</p>
+
+<div class="question">
+31. What is one growing concern about AI?<br>
+<select id="q31">
+<option></option>
+<option value="machines making moral decisions">machines making moral decisions</option>
+<option value="machines losing electricity">machines losing electricity</option>
+<option value="machines refusing instructions">machines refusing instructions</option>
+</select>
+</div>
+
+<div class="question">
+32. Why does this concern matter?<br>
+<select id="q32">
+<option></option>
+<option value="it complicates regulation">it complicates regulation</option>
+<option value="it affects cooking">it affects cooking</option>
+<option value="it reduces tourism">it reduces tourism</option>
+</select>
+</div>
+
+
+
+<p><b>Passage C</b></p>
+<p>
+Climate scientists studying long-term environmental change  
+have noted that small variations in ocean temperature can  
+trigger large-scale shifts in global weather patterns.  
+These changes often interact in unpredictable ways,  
+making climate modeling extremely challenging.  
+Because of these complexities, researchers emphasize  
+the importance of collecting precise data from multiple  
+sources to improve predictive accuracy.
+</p>
+
+<div class="question">
+33. What can small ocean temperature changes trigger?<br>
+<select id="q33">
+<option></option>
+<option value="large-scale weather shifts">large-scale weather shifts</option>
+<option value="political disputes">political disputes</option>
+<option value="species evolution">species evolution</option>
+</select>
+</div>
+
+<div class="question">
+34. Why is climate modeling difficult?<br>
+<select id="q34">
+<option></option>
+<option value="interactions are unpredictable">interactions are unpredictable</option>
+<option value="computers are too slow">computers are too slow</option>
+<option value="no data exists">no data exists</option>
+</select>
+</div>
+
+
+
+<!-- ============================ -->
+<!-- Part 4: 英作文 -->
+<!-- ============================ -->
+<h2>Part 4: Writing (160–200 words)</h2>
+
+<p><b>Topic:</b><br>
+Should governments impose strict regulations on AI-generated media  
+to prevent misinformation?<br>
+Give two reasons and discuss ethical implications. (160–200 words)
+</p>
+
+<textarea id="writing"></textarea>
+
+<button onclick="gradeTest1()">採点する</button>
+
+<div id="result" style="margin-top:20px; font-size:20px; font-weight:bold;"></div>
+
+</div>
+</body>
+</html>

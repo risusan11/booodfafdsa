@@ -1,0 +1,64 @@
+<!DOCTYPE html> 
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranking - Risu Eiken</title>
+<link rel="stylesheet" href="/css/ranking.css">
+
+<script>
+// ログインしていない場合は弾く
+if (!localStorage.getItem("username")) {
+  location.href = "/login.html";
+}
+</script>
+</head>
+
+<body>
+<header>
+  <h1>Risu Eiken Ranking</h1>
+  <a href="/" class="back">← 掲示板へ戻る</a>
+</header>
+
+<section>
+  <div class="controls">
+
+    <!-- 名前検索 -->
+    <input type="text" id="search" placeholder="名前検索">
+
+    <!-- ★ 改訂：英検1～5級＋準級＋Risu＋オリジナルの那落迦級(Naraku) -->
+    <select id="levelFilter">
+      <option value="all">全レベル</option>
+      <option value="5">5級</option>
+      <option value="4">4級</option>
+      <option value="3">3級</option>
+      <option value="Pre2">準2級</option>
+      <option value="2">2級</option>
+      <option value="Pre1">準1級</option>
+      <option value="1">1級</option>
+      <option value="Risu">Risu</option>
+
+      <!-- ★ オリジナル級 -->
+      <option value="Naraku">那落迦級</option>
+    </select>
+  </div>
+
+  <table id="scoreTable">
+    <thead>
+      <tr>
+        <th>名前</th>
+        <th>レベル</th>
+        <th>スコア</th>
+        <th>詳細</th>
+        <th>日付</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- JSで生成 -->
+    </tbody>
+  </table>
+</section>
+
+<script src="/script/ranking.js"></script>
+</body>
+</html>

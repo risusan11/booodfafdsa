@@ -1,0 +1,13 @@
+:root {
+  --bg: #f5f7fa;
+  --card: #ffffff;
+  --text: #111;
+  --accent: #3b6ef5;
+  --border: rgba(0,0,0,0.1);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.25s;
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>プロフィール</title>
+
+<link id="theme" rel="stylesheet" href="/css/light.css">
+<script src="/script/theme.js" defer></script>
+
+<style>
+body{
+  font-family:"Meiryo",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  margin:0;
+}
+
+/* ヘッダーバナー */
+#banner{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+/* アイコン */
+#icon{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid var(--card);
+  position:absolute;
+  top:130px;
+  left:40px;
+}
+
+.container{
+  width:90%;
+  max-width:700px;
+  margin:0 auto;
+  margin-top:80px;
+}
+
+.username{
+  font-size:26px;
+  font-weight:bold;
+  margin-top:10px;
+}
+
+.status{
+  font-size:16px;
+  margin-top:5px;
+  opacity:0.8;
+}
+
+.tag{
+  display:inline-block;
+  background:var(--card);
+  padding:6px 12px;
+  border-radius:8px;
+  margin-right:8px;
+  font-size:14px;
+}
+
+.box{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:20px;
+  margin-top:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- バナー -->
+<img id="banner" src="/icons/default_banner.jpg">
+
+<!-- アイコン -->
+<img id="icon" src="/icons/default.png">
+
+<div class="container">
+
+  <div class="username" id="username">@user</div>
+  <div class="status" id="status">● offline</div>
+
+  <div style="margin-top:14px;">
+    <span class="tag" id="levelTag">Lv.1</span>
+    <span class="tag" id="xpTag">XP 0</span>
+    <span class="tag" id="postsTag">投稿 0</span>
+    <span class="tag" id="likesTag">いいね 0</span>
+  </div>
+
+  <div class="box">
+    <h3>自己紹介</h3>
+    <p id="bio" style="white-space:pre-wrap;"></p>
+  </div>
+
+</div>
+
+<script>
+async function loadProfile(){
+  const username = location.pathname.split("/").pop();
+
+  document.getElementById("username").innerText = "@" + username;
+
+  const res = await fetch(`/api/user/profile?user=${username}`);
+  const data = await res.json();
+
+  document.getElementById("icon").src   = data.icon   || "/icons/default.png";
+  document.getElementById("banner").src = data.banner || "/icons/default_banner.jpg";
+
+  document.getElementById("bio").innerText = data.bio || "";
+
+  document.getElementById("status").innerText =
+    (data.status === "online" ? "● オンライン" :
+     data.status === "study"  ? "● 勉強中" :
+                                "● オフライン");
+
+  document.getElementById("levelTag").innerText = "Lv." + (data.level || 1);
+  document.getElementById("xpTag").innerText    = "XP " + (data.xp || 0);
+
+  document.getElementById("postsTag").innerText = "投稿 " + (data.posts || 0);
+  document.getElementById("likesTag").innerText = "いいね " + (data.likes || 0);
+}
+
+loadProfile();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EIKEN Grade 2 Practice Test</title>
+
+<link id="theme" rel="stylesheet" href="/css/light.css">
+<script src="/script/theme.js" defer></script>
+<script src="/script/test_core.js" defer></script>
+
+<style>
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: var(--card);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.question {
+  margin: 18px 0;
+  font-size: 18px;
+}
+
+select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 8px;
+  background: var(--input);
+  color: var(--text);
+}
+
+textarea {
+  height: 180px;
+  resize: vertical;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 30px;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+button:hover { opacity: 0.9; }
+
+.backBtn {
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:10px;
+  background:var(--card);
+  color:var(--text);
+  border:1px solid var(--border);
+  margin:20px 0;
+  font-weight:bold;
+  text-decoration:none;
+  transition:.25s;
+  box-shadow:0 4px 16px rgba(0,0,0,0.25);
+}
+.backBtn:hover {
+  background:var(--accent);
+  color:#fff;
+  transform:translateX(-3px);
+  box-shadow:0 0 15px var(--accent);
+}
+
+</style>
+
+<script>
+if (!localStorage.getItem("username")) location.href = "/login.html";
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<a href="/tests" class="backBtn">← Back</a>
+
+<h1>EIKEN Grade 2 – Practice Test</h1>
+
+<!-- Part 1 -->
+<h2>Part 1: Vocabulary & Grammar (20 questions)</h2>
+
+<div class="question">1. The company plans to ( ____ ) a new smartphone next month.<br>
+<select id="q1">
+<option></option>
+<option value="release">release</option>
+<option value="recover">recover</option>
+<option value="remind">remind</option>
+</select></div>
+
+<div class="question">2. The teacher encouraged us to take an ( ____ ) in the project.<br>
+<select id="q2">
+<option></option>
+<option value="interest">interest</option>
+<option value="charge">charge</option>
+<option value="attention">attention</option>
+</select></div>
+
+<div class="question">3. My brother was ( ____ ) for breaking the window.<br>
+<select id="q3">
+<option></option>
+<option value="punished">punished</option>
+<option value="praised">praised</option>
+<option value="treated">treated</option>
+</select></div>
+
+<div class="question">4. The new law will ( ____ ) from next April.<br>
+<select id="q4">
+<option></option>
+<option value="take effect">take effect</option>
+<option value="take part">take part</option>
+<option value="take off">take off</option>
+</select></div>
+
+<div class="question">5. The number of foreign visitors has ( ____ ) in recent years.<br>
+<select id="q5">
+<option></option>
+<option value="increased">increased</option>
+<option value="included">included</option>
+<option value="imagined">imagined</option>
+</select></div>
+
+<div class="question">6. The government should ( ____ ) traffic problems.<br>
+<select id="q6">
+<option></option>
+<option value="solve">solve</option>
+<option value="serve">serve</option>
+<option value="separate">separate</option>
+</select></div>
+
+<div class="question">7. We were ( ____ ) to enter the museum early.<br>
+<select id="q7">
+<option></option>
+<option value="allowed">allowed</option>
+<option value="removed">removed</option>
+<option value="shared">shared</option>
+</select></div>
+
+<div class="question">8. The manager ( ____ ) the staff to try new ideas.<br>
+<select id="q8">
+<option></option>
+<option value="encouraged">encouraged</option>
+<option value="entered">entered</option>
+<option value="earned">earned</option>
+</select></div>
+
+<div class="question">9. I ( ____ ) to finish my homework before dinner.<br>
+<select id="q9">
+<option></option>
+<option value="managed">managed</option>
+<option value="missed">missed</option>
+<option value="suggested">suggested</option>
+</select></div>
+
+<div class="question">10. My mother enjoys ( ____ ) novels.<br>
+<select id="q10">
+<option></option>
+<option value="reading">reading</option>
+<option value="to read">to read</option>
+<option value="reads">reads</option>
+</select></div>
+
+<!-- 11–20 -->
+<div class="question">11. If it ( ____ ) tomorrow, I will stay home.<br>
+<select id="q11">
+<option></option>
+<option value="rains">rains</option>
+<option value="rain">rain</option>
+<option value="rained">rained</option>
+</select></div>
+
+<div class="question">12. She went to the café ( ____ ) meet her friend.<br>
+<select id="q12">
+<option></option>
+<option value="to">to</option>
+<option value="at">at</option>
+<option value="by">by</option>
+</select></div>
+
+<div class="question">13. The teacher asked me ( ____ ) the window.<br>
+<select id="q13">
+<option></option>
+<option value="to open">to open</option>
+<option value="opening">opening</option>
+<option value="open">open</option>
+</select></div>
+
+<div class="question">14. I haven’t ( ____ ) my homework yet.<br>
+<select id="q14">
+<option></option>
+<option value="finished">finished</option>
+<option value="finish">finish</option>
+<option value="finishing">finishing</option>
+</select></div>
+
+<div class="question">15. It ( ____ ) two hours to get there.<br>
+<select id="q15">
+<option></option>
+<option value="takes">takes</option>
+<option value="took">took</option>
+<option value="taking">taking</option>
+</select></div>
+
+<div class="question">16. She made a ( ____ ) impression on the interviewers.<br>
+<select id="q16">
+<option></option>
+<option value="good">good</option>
+<option value="dark">dark</option>
+<option value="easy">easy</option>
+</select></div>
+
+<div class="question">17. Do you know ( ____ ) this bag belongs to?<br>
+<select id="q17">
+<option></option>
+<option value="who">who</option>
+<option value="what">what</option>
+<option value="which">which</option>
+</select></div>
+
+<div class="question">18. The bus was delayed ( ____ ) heavy rain.<br>
+<select id="q18">
+<option></option>
+<option value="because of">because of</option>
+<option value="because">because</option>
+<option value="during">during</option>
+</select></div>
+
+<div class="question">19. She ( ____ ) too much chocolate yesterday.<br>
+<select id="q19">
+<option></option>
+<option value="ate">ate</option>
+<option value="eat">eat</option>
+<option value="eats">eats</option>
+</select></div>
+
+<div class="question">20. I have never seen ( ____ ) a beautiful view.<br>
+<select id="q20">
+<option></option>
+<option value="such">such</option>
+<option value="same">same</option>
+<option value="similar">similar</option>
+</select></div>
+
+
+<!-- Part 2 -->
+<h2>Part 2: Conversation (5 questions)</h2>
+
+<div class="question">
+21. A: Could you open the window?<br>B: ____.<br>
+<select id="q21">
+<option></option>
+<option value="Sure, no problem">Sure, no problem</option>
+<option value="I don't think so">I don't think so</option>
+<option value="At the station">At the station</option>
+</select>
+</div>
+
+<div class="question">
+22. A: What time does the movie start?<br>B: ____.<br>
+<select id="q22">
+<option></option>
+<option value="At seven">At seven</option>
+<option value="On Wednesday">On Wednesday</option>
+<option value="Because I was tired">Because I was tired</option>
+</select>
+</div>
+
+<div class="question">
+23. A: How often do you read books?<br>B: ____.<br>
+<select id="q23">
+<option></option>
+<option value="Three times a week">Three times a week</option>
+<option value="Yes, I am">Yes, I am</option>
+<option value="In my room">In my room</option>
+</select>
+</div>
+
+<div class="question">
+24. A: Who is your favorite singer?<br>B: ____.<br>
+<select id="q24">
+<option></option>
+<option value="I like Aiko">I like Aiko</option>
+<option value="At the shop">At the shop</option>
+<option value="See you">See you</option>
+</select>
+</div>
+
+<div class="question">
+25. A: Thank you very much.<br>B: ____.<br>
+<select id="q25">
+<option></option>
+<option value="You're welcome">You're welcome</option>
+<option value="At school">At school</option>
+<option value="It's sunny">It's sunny</option>
+</select>
+</div>
+
+
+<!-- Part 3 -->
+<h2>Part 3: Reading (9 questions)</h2>
+
+<p><b>Passage A</b></p>
+<p>
+Kenta volunteers at a local library. He helps organize books and reads stories to children every Saturday.  
+Next year, he hopes to start a reading club to help more kids enjoy books.
+</p>
+
+<div class="question">
+26. What does Kenta do at the library?<br>
+<select id="q26">
+<option></option>
+<option value="reads stories to children">reads stories to children</option>
+<option value="teaches math">teaches math</option>
+<option value="plays the piano">plays the piano</option>
+</select>
+</div>
+
+<div class="question">
+27. When does he volunteer?<br>
+<select id="q27">
+<option></option>
+<option value="every Saturday">every Saturday</option>
+<option value="every morning">every morning</option>
+<option value="twice a month">twice a month</option>
+</select>
+</div>
+
+<div class="question">
+28. What does he want to start next year?<br>
+<select id="q28">
+<option></option>
+<option value="a reading club">a reading club</option>
+<option value="a sports team">a sports team</option>
+<option value="a cooking class">a cooking class</option>
+</select>
+</div>
+
+<p><b>Passage B</b></p>
+<p>
+Mary loves traveling abroad. Last summer, she visited Italy with her family.
+She enjoyed Italian food very much and took many pictures of famous places such as Rome and Venice.
+</p>
+
+<div class="question">
+29. Where did Mary go last summer?<br>
+<select id="q29">
+<option></option>
+<option value="Italy">Italy</option>
+<option value="Canada">Canada</option>
+<option value="Korea">Korea</option>
+</select>
+</div>
+
+<div class="question">
+30. What did Mary enjoy?<br>
+<select id="q30">
+<option></option>
+<option value="Italian food">Italian food</option>
+<option value="skiing">skiing</option>
+<option value="shopping">shopping</option>
+</select>
+</div>
+
+<div class="question">
+31. What did she take pictures of?<br>
+<select id="q31">
+<option></option>
+<option value="famous places">famous places</option>
+<option value="animals">animals</option>
+<option value="flowers">flowers</option>
+</select>
+</div>
+
+<p><b>Passage C</b></p>
+<p>
+Ken has been playing soccer since he was seven years old.
+He practices after school five days a week. His dream is to become a professional soccer player.
+</p>
+
+<div class="question">
+32. When did Ken start playing soccer?<br>
+<select id="q32">
+<option></option>
+<option value="when he was seven">when he was seven</option>
+<option value="last year">last year</option>
+<option value="in high school">in high school</option>
+</select>
+</div>
+
+<div class="question">
+33. How often does he practice?<br>
+<select id="q33">
+<option></option>
+<option value="five days a week">five days a week</option>
+<option value="once a week">once a week</option>
+<option value="every morning">every morning</option>
+</select>
+</div>
+
+<div class="question">
+34. What is Ken’s dream?<br>
+<select id="q34">
+<option></option>
+<option value="to become a professional soccer player">to become a professional soccer player</option>
+<option value="to be a doctor">to be a doctor</option>
+<option value="to teach English">to teach English</option>
+</select>
+</div>
+
+
+<!-- Part 4 -->
+<h2>Part 4: Writing (80–100 words)</h2>
+
+<p><b>Question:</b><br>
+Do you think high school students should have part-time jobs?<br>
+Write 80–100 words.
+</p>
+
+<textarea id="writing"></textarea>
+
+<button onclick="gradeTest2()">Submit</button>
+
+<div id="result" style="margin-top:30px; font-size:20px; font-weight:bold;"></div>
+
+</div>
+</body>
+</html>

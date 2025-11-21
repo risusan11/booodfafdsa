@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EIKEN Grade Pre-2 Practice Test</title>
+
+<link id="theme" rel="stylesheet" href="/css/light.css">
+<script src="/script/theme.js" defer></script>
+<script src="/script/test_core.js" defer></script>
+
+<style>
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: var(--card);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.question {
+  margin: 18px 0;
+  font-size: 18px;
+}
+
+select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 8px;
+  background: var(--input);
+  color: var(--text);
+}
+
+textarea {
+  height: 180px;
+  resize: vertical;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 30px;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+button:hover { opacity: 0.9; }
+
+.backBtn {
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:10px;
+  background:var(--card);
+  color:var(--text);
+  border:1px solid var(--border);
+  margin:20px 0;
+  font-weight:bold;
+  text-decoration:none;
+  transition:.25s;
+  box-shadow:0 4px 16px rgba(0,0,0,0.25);
+}
+.backBtn:hover {
+  background:var(--accent);
+  color:#fff;
+  transform:translateX(-3px);
+  box-shadow:0 0 15px var(--accent);
+}
+</style>
+
+<script>
+if (!localStorage.getItem("username")) location.href = "/login.html";
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<a href="/tests" class="backBtn">← Back</a>
+
+<h1>EIKEN Grade Pre-2 – Practice Test</h1>
+
+<!-- Part 1 -->
+<h2>Part 1: Vocabulary & Grammar (20 questions)</h2>
+
+<div class="question">
+1. My brother wants to ( ____ ) a doctor.<br>
+<select id="q1">
+  <option></option>
+  <option value="become">become</option>
+  <option value="becoming">becoming</option>
+  <option value="became">became</option>
+</select>
+</div>
+
+<div class="question">
+2. This movie was very ( ____ ).<br>
+<select id="q2">
+  <option></option>
+  <option value="exciting">exciting</option>
+  <option value="excited">excited</option>
+  <option value="excite">excite</option>
+</select>
+</div>
+
+<div class="question">
+3. She ( ____ ) this book last week.<br>
+<select id="q3">
+  <option></option>
+  <option value="read">read</option>
+  <option value="reading">reading</option>
+  <option value="reads">reads</option>
+</select>
+</div>
+
+<div class="question">
+4. I am looking forward to ( ____ ) you again.<br>
+<select id="q4">
+  <option></option>
+  <option value="seeing">seeing</option>
+  <option value="see">see</option>
+  <option value="saw">saw</option>
+</select>
+</div>
+
+<div class="question">
+5. There are ( ____ ) people at the station.<br>
+<select id="q5">
+  <option></option>
+  <option value="many">many</option>
+  <option value="much">much</option>
+  <option value="few">few</option>
+</select>
+</div>
+
+<div class="question">
+6. If it ( ____ ) tomorrow, we will stay home.<br>
+<select id="q6">
+  <option></option>
+  <option value="rains">rains</option>
+  <option value="rain">rain</option>
+  <option value="rained">rained</option>
+</select>
+</div>
+
+<div class="question">
+7. He tried ( ____ ) the computer, but it didn’t work.<br>
+<select id="q7">
+  <option></option>
+  <option value="to fix">to fix</option>
+  <option value="fix">fix</option>
+  <option value="fixing">fixing</option>
+</select>
+</div>
+
+<div class="question">
+8. My hometown is ( ____ ) than Tokyo.<br>
+<select id="q8">
+  <option></option>
+  <option value="safer">safer</option>
+  <option value="safe">safe</option>
+  <option value="safest">safest</option>
+</select>
+</div>
+
+<div class="question">
+9. The teacher told us ( ____ ) quietly.<br>
+<select id="q9">
+  <option></option>
+  <option value="to study">to study</option>
+  <option value="study">study</option>
+  <option value="studied">studied</option>
+</select>
+</div>
+
+<div class="question">
+10. I have never ( ____ ) to Hokkaido.<br>
+<select id="q10">
+  <option></option>
+  <option value="been">been</option>
+  <option value="go">go</option>
+  <option value="went">went</option>
+</select>
+</div>
+
+<!-- 11〜20 -->
+<div class="question">
+11. My sister enjoys ( ____ ) music.<br>
+<select id="q11">
+  <option></option>
+  <option value="listening to">listening to</option>
+  <option value="listen">listen</option>
+  <option value="listened">listened</option>
+</select>
+</div>
+
+<div class="question">
+12. I have a friend ( ____ ) lives in Canada.<br>
+<select id="q12">
+  <option></option>
+  <option value="who">who</option>
+  <option value="what">what</option>
+  <option value="where">where</option>
+</select>
+</div>
+
+<div class="question">
+13. We must ( ____ ) the rules.<br>
+<select id="q13">
+  <option></option>
+  <option value="follow">follow</option>
+  <option value="following">following</option>
+  <option value="follows">follows</option>
+</select>
+</div>
+
+<div class="question">
+14. There ( ____ ) a big festival next month.<br>
+<select id="q14">
+  <option></option>
+  <option value="will be">will be</option>
+  <option value="is">is</option>
+  <option value="was">was</option>
+</select>
+</div>
+
+<div class="question">
+15. I want to know ( ____ ) he likes soccer.<br>
+<select id="q15">
+  <option></option>
+  <option value="why">why</option>
+  <option value="what">what</option>
+  <option value="when">when</option>
+</select>
+</div>
+
+<div class="question">
+16. She has ( ____ ) the piano for five years.<br>
+<select id="q16">
+  <option></option>
+  <option value="played">played</option>
+  <option value="play">play</option>
+  <option value="playing">playing</option>
+</select>
+</div>
+
+<div class="question">
+17. The movie was ( ____ ) I expected.<br>
+<select id="q17">
+  <option></option>
+  <option value="better than">better than</option>
+  <option value="best">best</option>
+  <option value="good">good</option>
+</select>
+</div>
+
+<div class="question">
+18. My mother made me ( ____ ) my room.<br>
+<select id="q18">
+  <option></option>
+  <option value="clean">clean</option>
+  <option value="cleaning">cleaning</option>
+  <option value="cleaned">cleaned</option>
+</select>
+</div>
+
+<div class="question">
+19. I was surprised ( ____ ) the news.<br>
+<select id="q19">
+  <option></option>
+  <option value="at">at</option>
+  <option value="in">in</option>
+  <option value="to">to</option>
+</select>
+</div>
+
+<div class="question">
+20. This book is worth ( ____ ).<br>
+<select id="q20">
+  <option></option>
+  <option value="reading">reading</option>
+  <option value="read">read</option>
+  <option value="reads">reads</option>
+</select>
+</div>
+
+<!-- Part 2 -->
+<h2>Part 2: Conversation (5 questions)</h2>
+
+<div class="question">
+21. A: How was your weekend?<br>B: ____.<br>
+<select id="q21">
+  <option></option>
+  <option value="It was great">It was great</option>
+  <option value="At school">At school</option>
+  <option value="Twice">Twice</option>
+</select>
+</div>
+
+<div class="question">
+22. A: Can you help me carry this box?<br>B: ____.<br>
+<select id="q22">
+  <option></option>
+  <option value="Sure, no problem">Sure, no problem</option>
+  <option value="I like music">I like music</option>
+  <option value="See you">See you</option>
+</select>
+</div>
+
+<div class="question">
+23. A: How often do you exercise?<br>B: ____.<br>
+<select id="q23">
+  <option></option>
+  <option value="Three times a week">Three times a week</option>
+  <option value="Yes, I do">Yes, I do</option>
+  <option value="In Tokyo">In Tokyo</option>
+</select>
+</div>
+
+<div class="question">
+24. A: Where is your sister?<br>B: ____.<br>
+<select id="q24">
+  <option></option>
+  <option value="She’s in the library">She’s in the library</option>
+  <option value="Very good">Very good</option>
+  <option value="Morning">Morning</option>
+</select>
+</div>
+
+<div class="question">
+25. A: Thank you for your help.<br>B: ____.<br>
+<select id="q25">
+  <option></option>
+  <option value="You're welcome">You're welcome</option>
+  <option value="See you">See you</option>
+  <option value="I’m twelve">I’m twelve</option>
+</select>
+</div>
+
+<!-- Part 3 -->
+<h2>Part 3: Reading (9 questions)</h2>
+
+<p><b>Passage A</b></p>
+<p>
+Emma loves gardening. Every weekend, she plants new flowers in her garden.
+She sometimes grows vegetables, too. She hopes to open a small flower shop someday.
+</p>
+
+<div class="question">
+26. What does Emma plant every weekend?<br>
+<select id="q26">
+  <option></option>
+  <option value="flowers">flowers</option>
+  <option value="trees">trees</option>
+  <option value="rice">rice</option>
+</select>
+</div>
+
+<div class="question">
+27. What else does she sometimes grow?<br>
+<select id="q27">
+  <option></option>
+  <option value="vegetables">vegetables</option>
+  <option value="fish">fish</option>
+  <option value="fruit">fruit</option>
+</select>
+</div>
+
+<div class="question">
+28. What does Emma want to do in the future?<br>
+<select id="q28">
+  <option></option>
+  <option value="open a flower shop">open a flower shop</option>
+  <option value="work abroad">work abroad</option>
+  <option value="become a doctor">become a doctor</option>
+</select>
+</div>
+
+<p><b>Passage B</b></p>
+<p>
+Mark enjoys taking pictures. He started learning photography two years ago.
+He likes taking pictures of nature. Last month, he won a small photo contest.
+</p>
+
+<div class="question">
+29. When did Mark start photography?<br>
+<select id="q29">
+  <option></option>
+  <option value="two years ago">two years ago</option>
+  <option value="last week">last week</option>
+  <option value="yesterday">yesterday</option>
+</select>
+</div>
+
+<div class="question">
+30. What does he like to take pictures of?<br>
+<select id="q30">
+  <option></option>
+  <option value="nature">nature</option>
+  <option value="people">people</option>
+  <option value="cars">cars</option>
+</select>
+</div>
+
+<div class="question">
+31. What happened last month?<br>
+<select id="q31">
+  <option></option>
+  <option value="He won a photo contest">He won a photo contest</option>
+  <option value="He bought a car">He bought a car</option>
+  <option value="He started school">He started school</option>
+</select>
+</div>
+
+<p><b>Passage C</b></p>
+<p>
+Lisa volunteers at an animal shelter. She cleans the cages and feeds the animals.
+She wants to become a veterinarian in the future. She studies animal biology every day.
+</p>
+
+<div class="question">
+32. Where does Lisa volunteer?<br>
+<select id="q32">
+  <option></option>
+  <option value="an animal shelter">an animal shelter</option>
+  <option value="a school">a school</option>
+  <option value="a hospital">a hospital</option>
+</select>
+</div>
+
+<div class="question">
+33. What does she want to be in the future?<br>
+<select id="q33">
+  <option></option>
+  <option value="a veterinarian">a veterinarian</option>
+  <option value="a singer">a singer</option>
+  <option value="a pilot">a pilot</option>
+</select>
+</div>
+
+<div class="question">
+34. What does she study every day?<br>
+<select id="q34">
+  <option></option>
+  <option value="animal biology">animal biology</option>
+  <option value="math">math</option>
+  <option value="history">history</option>
+</select>
+</div>
+
+<!-- Part 4 -->
+<h2>Part 4: Writing (50–60 words)</h2>
+
+<p><b>Question:</b><br>
+Do you think students should do volunteer work?<br>
+Write 50–60 words.
+</p>
+
+<textarea id="writing"></textarea>
+
+<button onclick="gradePre2()">Submit</button>
+
+<div id="result" style="margin-top:30px; font-size:20px; font-weight:bold;"></div>
+
+</div>
+</body>
+</html>

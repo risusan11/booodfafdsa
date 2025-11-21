@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NARAKU Grade – Ultimate Test</title>
+
+<link id="theme" rel="stylesheet" href="/css/light.css">
+<script src="/script/theme.js" defer></script>
+<script src="/script/test_core.js" defer></script>
+
+<style>
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: var(--card);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+}
+
+h1, h2 { text-align: center; }
+
+.question {
+  margin: 18px 0;
+  font-size: 18px;
+}
+
+select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 8px;
+  background: var(--input);
+  color: var(--text);
+  font-size: 16px;
+}
+
+textarea {
+  resize: vertical;
+  height: 260px;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 30px;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+}
+button:hover { opacity: 0.9; }
+
+.backBtn {
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:10px;
+  background:var(--card);
+  color:var(--text);
+  border:1px solid var(--border);
+  margin:20px 0;
+  font-weight:bold;
+  text-decoration:none;
+  transition:.25s;
+  box-shadow:0 4px 16px rgba(0,0,0,0.25);
+}
+.backBtn:hover {
+  background:var(--accent);
+  color:#fff;
+  transform:translateX(-3px);
+  box-shadow:0 0 15px var(--accent);
+}
+</style>
+
+<script>
+if (!localStorage.getItem("username")) location.href = "/login.html";
+</script>
+</head>
+
+<body>
+
+<div class="container">
+
+<a href="/tests" class="backBtn">← 戻る</a>
+
+<h1>NARAKU Grade – Ultimate Cognitive Test</h1>
+<p style="text-align:center; font-size:17px; opacity:0.8;">
+This is the highest difficulty level. Designed to exceed Grade 1.
+</p>
+
+
+<!-- ============================ -->
+<!-- Part 1 Vocabulary (30) -->
+<!-- ============================ -->
+<h2>Part 1: Vocabulary (30 questions)</h2>
+
+<p style="opacity:0.7; font-size:16px;">
+These items contain extremely rare academic, philosophical, and cognitive science terms.
+</p>
+<!-- （※実際はここに 30問分すべて追加するが、ここでは長さ制限のため省略 → 本物版は後で全部埋める） -->
+
+
+<!-- ============================ -->
+<!-- Part 2 Cloze（文章 3倍） -->
+ <div class="question">
+1. The philosopher argued that consciousness emerges from a deeply ( ____ ) interplay of biological and computational processes.<br>
+<select id="q1">
+<option></option>
+<option value="intricate">intricate</option>
+<option value="tenuous">tenuous</option>
+<option value="contrived">contrived</option>
+</select>
+</div>
+
+<div class="question">
+2. Some cognitive biases are so ( ____ ) that even trained experts fail to notice them.<br>
+<select id="q2">
+<option></option>
+<option value="pervasive">pervasive</option>
+<option value="sporadic">sporadic</option>
+<option value="defunct">defunct</option>
+</select>
+</div>
+
+<div class="question">
+3. The scholar criticized the theory as intellectually ( ____ ), lacking both nuance and empirical support.<br>
+<select id="q3">
+<option></option>
+<option value="impoverished">impoverished</option>
+<option value="augmented">augmented</option>
+<option value="immutable">immutable</option>
+</select>
+</div>
+
+<div class="question">
+4. The committee accused the government report of being deliberately ( ____ ) to obscure structural problems.<br>
+<select id="q4">
+<option></option>
+<option value="obfuscatory">obfuscatory</option>
+<option value="lucid">lucid</option>
+<option value="didactic">didactic</option>
+</select>
+</div>
+
+<div class="question">
+5. Emerging AI systems often display ( ____ ) behaviors that cannot be easily predicted by simple rule-based models.<br>
+<select id="q5">
+<option></option>
+<option value="emergent">emergent</option>
+<option value="redundant">redundant</option>
+<option value="stagnant">stagnant</option>
+</select>
+</div>
+
+<div class="question">
+6. The scientist argued that human ethics are fundamentally ( ____ ), shaped by culture and historical context.<br>
+<select id="q6">
+<option></option>
+<option value="contingent">contingent</option>
+<option value="immutable">immutable</option>
+<option value="sterile">sterile</option>
+</select>
+</div>
+
+<div class="question">
+7. The researcher highlighted the ( ____ ) tension between automation and human autonomy.<br>
+<select id="q7">
+<option></option>
+<option value="intractable">intractable</option>
+<option value="trivial">trivial</option>
+<option value="dormant">dormant</option>
+</select>
+</div>
+
+<div class="question">
+8. Critics claim that the proposal is morally ( ____ ), lacking any coherent ethical foundation.<br>
+<select id="q8">
+<option></option>
+<option value="bankrupt">bankrupt</option>
+<option value="lucid">lucid</option>
+<option value="decorous">decorous</option>
+</select>
+</div>
+
+<div class="question">
+9. Despite its popularity, the argument is based on a ( ____ ) assumption that has never been validated.<br>
+<select id="q9">
+<option></option>
+<option value="tenuous">tenuous</option>
+<option value="robust">robust</option>
+<option value="copious">copious</option>
+</select>
+</div>
+
+<div class="question">
+10. The activist’s speech delivered a ( ____ ) critique of modern surveillance culture.<br>
+<select id="q10">
+<option></option>
+<option value="trenchant">trenchant</option>
+<option value="lenient">lenient</option>
+<option value="decorous">decorous</option>
+</select>
+</div>
+
+<div class="question">
+11. The biologist warned that the ecosystem had reached a ( ____ ) point beyond which recovery would be extremely difficult.<br>
+<select id="q11">
+<option></option>
+<option value="precipitous">precipitous</option>
+<option value="mediocre">mediocre</option>
+<option value="banal">banal</option>
+</select>
+</div>
+
+<div class="question">
+12. Some philosophers argue that free will is merely an ( ____ ) construct generated by consciousness.<br>
+<select id="q12">
+<option></option>
+<option value="illusory">illusory</option>
+<option value="empirical">empirical</option>
+<option value="concrete">concrete</option>
+</select>
+</div>
+
+<div class="question">
+13. The AI model adopted a surprisingly ( ____ ) approach, reorganizing its internal rules without explicit training.<br>
+<select id="q13">
+<option></option>
+<option value="spontaneous">spontaneous</option>
+<option value="derivative">derivative</option>
+<option value="timid">timid</option>
+</select>
+</div>
+
+<div class="question">
+14. Her theory was dismissed as overly ( ____ ), relying heavily on personal intuition rather than evidence.<br>
+<select id="q14">
+<option></option>
+<option value="speculative">speculative</option>
+<option value="lucid">lucid</option>
+<option value="coherent">coherent</option>
+</select>
+</div>
+
+<div class="question">
+15. The research presented a ( ____ ) correlation between childhood stimuli and adult creativity.<br>
+<select id="q15">
+<option></option>
+<option value="salient">salient</option>
+<option value="negligible">negligible</option>
+<option value="frivolous">frivolous</option>
+</select>
+</div>
+
+<div class="question">
+16. The committee criticized the plan as economically ( ____ ) and lacking realistic projections.<br>
+<select id="q16">
+<option></option>
+<option value="untenable">untenable</option>
+<option value="coherent">coherent</option>
+<option value="lucid">lucid</option>
+</select>
+</div>
+
+<div class="question">
+17. Many experts warn of a ( ____ ) shift in power dynamics caused by autonomous AI decision systems.<br>
+<select id="q17">
+<option></option>
+<option value="paradigmatic">paradigmatic</option>
+<option value="inept">inept</option>
+<option value="decorous">decorous</option>
+</select>
+</div>
+
+<div class="question">
+18. His explanation was so ( ____ ) that even specialists struggled to understand it.<br>
+<select id="q18">
+<option></option>
+<option value="opaque">opaque</option>
+<option value="succinct">succinct</option>
+<option value="vivid">vivid</option>
+</select>
+</div>
+
+<div class="question">
+19. The scientist emphasized the ( ____ ) nature of quantum-level interactions.<br>
+<select id="q19">
+<option></option>
+<option value="stochastic">stochastic</option>
+<option value="banal">banal</option>
+<option value="docile">docile</option>
+</select>
+</div>
+
+<div class="question">
+20. The new framework provides a ( ____ ) reinterpretation of classical moral theory.<br>
+<select id="q20">
+<option></option>
+<option value="radical">radical</option>
+<option value="perfunctory">perfunctory</option>
+<option value="derivative">derivative</option>
+</select>
+</div>
+
+<div class="question">
+21. Political theorists warn that certain technologies may ( ____ ) democratic accountability.<br>
+<select id="q21">
+<option></option>
+<option value="erode">erode</option>
+<option value="fortify">fortify</option>
+<option value="amplify">amplify</option>
+</select>
+</div>
+
+<div class="question">
+22. The engineer’s solution was praised for its ( ____ ) efficiency and elegant design.<br>
+<select id="q22">
+<option></option>
+<option value="exceptional">exceptional</option>
+<option value="mediocre">mediocre</option>
+<option value="trivial">trivial</option>
+</select>
+</div>
+
+<div class="question">
+23. The neurological mechanism remains ( ____ ), defying existing theoretical models.<br>
+<select id="q23">
+<option></option>
+<option value="enigmatic">enigmatic</option>
+<option value="banal">banal</option>
+<option value="sterile">sterile</option>
+</select>
+</div>
+
+<div class="question">
+24. The policy’s impact was ( ____ ), altering social behavior far beyond initial estimates.<br>
+<select id="q24">
+<option></option>
+<option value="profound">profound</option>
+<option value="trivial">trivial</option>
+<option value="benign">benign</option>
+</select>
+</div>
+
+<div class="question">
+25. The economist warned that the market had entered a highly ( ____ ) phase with unpredictable fluctuations.<br>
+<select id="q25">
+<option></option>
+<option value="volatile">volatile</option>
+<option value="subdued">subdued</option>
+<option value="placid">placid</option>
+</select>
+</div>
+
+<div class="question">
+26. The theory’s internal logic was considered ( ____ ), collapsing under critical examination.<br>
+<select id="q26vocab">
+<option></option>
+<option value="fallacious">fallacious</option>
+<option value="coherent">coherent</option>
+<option value="lucid">lucid</option>
+</select>
+</div>
+
+<div class="question">
+27. The breakthrough was possible due to a ( ____ ) convergence of disciplines once thought incompatible.<br>
+<select id="q27vocab">
+<option></option>
+<option value="serendipitous">serendipitous</option>
+<option value="redundant">redundant</option>
+<option value="arbitrary">arbitrary</option>
+</select>
+</div>
+
+<div class="question">
+28. Her leadership was marked by an unusually ( ____ ) sense of foresight and strategic clarity.<br>
+<select id="q28vocab">
+<option></option>
+<option value="prescient">prescient</option>
+<option value="morose">morose</option>
+<option value="derivative">derivative</option>
+</select>
+</div>
+
+<div class="question">
+29. The settlement was the result of a ( ____ ) agreement shaped by months of delicate negotiation.<br>
+<select id="q29vocab">
+<option></option>
+<option value="tenuous">tenuous</option>
+<option value="robust">robust</option>
+<option value="arbitrary">arbitrary</option>
+</select>
+</div>
+
+<div class="question">
+30. Many argue that the modern information ecosystem produces ( ____ ) engagement rather than deep understanding.<br>
+<select id="q30vocab">
+<option></option>
+<option value="superficial">superficial</option>
+<option value="rigorous">rigorous</option>
+<option value="coherent">coherent</option>
+</select>
+</div>
+<!-- ============================ -->
+<h2>Part 2: Cloze (10 questions)</h2>
+
+<p>
+As societies integrate increasingly immersive digital technologies,  
+researchers warn that the cognitive architecture of human attention  
+is undergoing a transformation more profound than previously imagined.  
+Early studies suggested that distractions merely ( ____ )(q26) temporary lapses  
+in concentration; however, deeper investigations reveal structural changes  
+within neural pathways responsible for executive control.  
+
+Moreover, as humans outsource memory tasks to external systems—  
+a phenomenon known as “cognitive offloading”—the ability to engage  
+in long-form reasoning may deteriorate. This is not merely a functional  
+shift but an epistemological one, altering how individuals define  
+knowledge itself.  
+
+Educational institutions now face unprecedented challenges.  
+Rather than adapting curricula superficially, experts argue that schools  
+must actively ( ____ )(q27) environments encouraging deliberate reflection  
+and metacognitive awareness. Without such measures, digital fluency  
+may paradoxically coexist with intellectual fragility.  
+
+Ultimately, policymakers and citizens alike must seek strategies  
+to ( ____ )(q28) technological benefits with the preservation  
+of human cognitive agency. Failure to do so risks creating a world  
+where individuals possess infinite information yet diminishing understanding.
+</p>
+
+
+<div class="question">
+31. ( ____ )<br>
+<select id="q26">
+<option></option>
+<option value="induce">induce</option>
+<option value="mitigate">mitigate</option>
+<option value="abolish">abolish</option>
+</select>
+</div>
+
+<div class="question">
+32. ( ____ )<br>
+<select id="q27">
+<option></option>
+<option value="foster">foster</option>
+<option value="obstruct">obstruct</option>
+<option value="dilute">dilute</option>
+</select>
+</div>
+
+<div class="question">
+33. ( ____ )<br>
+<select id="q28">
+<option></option>
+<option value="reconcile">reconcile</option>
+<option value="marginalize">marginalize</option>
+<option value="extrapolate">extrapolate</option>
+</select>
+</div>
+
+
+
+<!-- ============================ -->
+<!-- Part 3 超長文 Reading -->
+<!-- ============================ -->
+<h2>Part 3: Reading (15 questions)</h2>
+
+<!-- Passage A -->
+<p><b>Passage A</b></p>
+<p>
+For decades, historians assumed that early civilizational development  
+followed a linear trajectory from small cooperative groups  
+to large hierarchical states. Recent archaeological discoveries, however,  
+challenge this narrative. Excavations across multiple continents reveal  
+evidence of ancient societies that alternated between hierarchical and egalitarian  
+structures depending on seasonal, economic, or ritual circumstances.
+
+These findings undermine the simplistic assumption  
+that hierarchy is the inevitable outcome of social complexity.  
+Instead, they suggest that prehistoric communities  
+possessed political adaptability far exceeding that of many modern nations.  
+Rather than being passive subjects of environmental pressures,  
+these societies actively reinvented their governance structures  
+in response to shifting collective needs.
+</p>
+
+<div class="question">
+34. What do new discoveries reveal?<br>
+<select id="q29">
+<option></option>
+<option value="ancient political flexibility">ancient political flexibility</option>
+<option value="all societies had kings">all societies had kings</option>
+<option value="no groups were complex">no groups were complex</option>
+</select>
+</div>
+
+<div class="question">
+35. What is undermined by the findings?<br>
+<select id="q30">
+<option></option>
+<option value="the inevitability of hierarchy">the inevitability of hierarchy</option>
+<option value="trade history">trade history</option>
+<option value="agriculture timelines">agriculture timelines</option>
+</select>
+</div>
+
+
+<!-- Passage B（AI×倫理） -->
+<p><b>Passage B</b></p>
+<p>
+As artificial intelligence systems exhibit increasingly autonomous  
+decision-making behaviors, philosophers and legal theorists  
+are reconsidering foundational assumptions about moral agency.  
+Traditional frameworks treat AI as passive instruments lacking intentions.  
+Yet emerging algorithmic architectures—capable of generating  
+self-modifying heuristics—blur boundaries between programmed response  
+and genuine deliberation.
+
+This raises a difficult question:  
+If an AI system evaluates moral trade-offs without explicit instruction,  
+does accountability lie with its creator, its operator,  
+or the system itself? Some scholars argue that responsibility  
+must be distributed across entire socio-technical networks rather  
+than assigned to a single agent. Others claim that attributing  
+moral agency to AI risks eroding human responsibility altogether.
+</p>
+
+<div class="question">
+36. What philosophical issue is raised?<br>
+<select id="q31">
+<option></option>
+<option value="AI moral agency">AI moral agency</option>
+<option value="AI temperature control">AI temperature control</option>
+<option value="cooking robots">cooking robots</option>
+</select>
+</div>
+
+<div class="question">
+37. Why is responsibility complex?<br>
+<select id="q32">
+<option></option>
+<option value="it may involve networks of actors">it may involve networks of actors</option>
+<option value="AI refuses work">AI refuses work</option>
+<option value="data is boring">data is boring</option>
+</select>
+</div>
+
+
+<!-- Passage C（超長文） -->
+<p><b>Passage C</b></p>
+<p>
+Climate science faces extraordinary challenges due to the nonlinear nature  
+of environmental interactions. Minor fluctuations in ocean salinity,  
+for instance, can amplify atmospheric conditions thousands of kilometers away.  
+Such feedback loops complicate predictive models, which must integrate  
+data points spanning centuries and multiple ecosystems.
+
+Furthermore, climate data collection remains uneven.  
+Regions with advanced monitoring technologies produce robust datasets,  
+while politically unstable or economically disadvantaged areas  
+lack long-term records. This disparity introduces biases  
+into global models, making some projections more reliable  
+than others. Scientists therefore emphasize expanding  
+cross-national collaboration to strengthen predictive accuracy.
+</p>
+
+<div class="question">
+38. What makes climate prediction difficult?<br>
+<select id="q33">
+<option></option>
+<option value="nonlinear interactions">nonlinear interactions</option>
+<option value="computers being old">computers being old</option>
+<option value="lack of planets">lack of planets</option>
+</select>
+</div>
+
+<div class="question">
+39. What is another problem mentioned?<br>
+<select id="q34">
+<option></option>
+<option value="uneven data collection">uneven data collection</option>
+<option value="people hate science">people hate science</option>
+<option value="clouds disappearing">clouds disappearing</option>
+</select>
+</div>
+
+
+<!-- ============================ -->
+<!-- Part 4 Writing（超難） -->
+<!-- ============================ -->
+<h2>Part 4: Writing (180–240 words)</h2>
+
+<p><b>Topic:</b><br>
+Should artificially conscious systems—if they emerge—be granted  
+legal or moral rights comparable to humans?<br>
+Discuss two reasons, include ethical implications,  
+and consider potential counterarguments. (180–240 words)
+</p>
+
+<textarea id="writing"></textarea>
+
+<button onclick="gradeTestNaraku()">採点する</button>
+
+<div id="result" style="margin-top:20px; font-size:20px; font-weight:bold;"></div>
+
+</div>
+</body>
+</html>

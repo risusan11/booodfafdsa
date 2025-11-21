@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>サーバー一覧</title>
+
+<!-- ★ テーマ -->
+<link id="theme" rel="stylesheet" href="/css/light.css">
+<script src="/script/theme.js" defer></script>
+
+<style>
+body{
+  font-family:"Meiryo",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  margin:0;
+}
+
+/* --- 上部ナビバー --- */
+nav{
+  background:var(--card);
+  padding:12px 24px;
+  display:flex;
+  align-items:center;
+  border-bottom:1px solid var(--border);
+}
+
+nav a{
+  color:var(--text);
+  text-decoration:none;
+  font-weight:600;
+  margin-right:20px;
+  font-size:15px;
+}
+nav a:hover{
+  color:var(--accent);
+}
+
+/* --- コンテナ --- */
+.container{
+  width:92%;
+  max-width:880px;
+  margin:32px auto;
+}
+
+/* --- サーバーカード --- */
+.server{
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:18px 20px;
+  margin-bottom:14px;
+  border-radius:10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  transition:0.2s ease;
+}
+
+.server:hover{
+  transform:translateY(-2px);
+  box-shadow:0 4px 14px rgba(0,0,0,0.07);
+}
+
+/* 削除アニメーション */
+.server.fade-out{
+  opacity:0;
+  transform:translateX(-15px);
+}
+
+/* --- サーバー名リンク --- */
+.server a{
+  font-size:17px;
+  color:var(--text);
+  text-decoration:none;
+  font-weight:600;
+}
+.server a:hover{
+  color:var(--accent);
+}
+
+/* --- ボタン --- */
+button{
+  padding:9px 14px;
+  border:none;
+  background:var(--accent);
+  color:white;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:600;
+  transition:0.18s;
+}
+button:hover{
+  opacity:0.9;
+}
+
+button.delete{
+  background:#e34d4d;
+}
+button.delete:hover{
+  opacity:0.85;
+}
+
+/* --- 入力欄 --- */
+input{
+  width:100%;
+  padding:11px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  background:var(--input);
+  color:var(--text);
+  margin-bottom:12px;
+  font-size:15px;
+}
+input:focus{
+  outline:none;
+  border-color:var(--accent);
+}
+</style>
+</head>
+
+<body>
+
+<script>
+// ------------------------------
+// ★ ログインしていなければ強制ログイン
+// ------------------------------
+if (!localStorage.getItem("username")) {
+  location.href = "/login.html";
+}
+</script>
+
+<nav>
+  <a href="/">サーバー一覧</a>
+  <a href="/tests.html">英検</a>
+  <a href="/ranking.html">ランキング</a>
+  <a href="/friend.html">フレンド</a>
+  
+  <a href="/friend_add.html"
+     style="margin-left:8px; background:var(--accent); color:white; padding:6px 12px; border-radius:6px; text-decoration:none;">
+    ＋フレンド
+  </a>
+
+  <!-- ★ 右端の丸アイコン（プロフィール） -->
+  <img id="navProfileIcon"
+       src="/icons/default.png"
+       onclick="location.href='/profile.html'"
+       style="width:34px; height:34px; border-radius:50%; object-fit:cover; margin-left:auto; cursor:pointer;">
+
+  <!-- ★ ログアウト -->
+  <button onclick="logout()" style="margin-left:12px;">🚪</button>
+
+  <button onclick="toggleTheme()" style="margin-left:12px;">🌓</button>
+</nav>
+
+
+
+
+<div class="container">
+  <h2>サーバー一覧</h2>
+
+  <div>
+    <input id="newServerName" placeholder="新しいサーバー名を入力">
+    <button onclick="createServer()">サーバー作成</button>
+  </div>
+
+  <h3 style="margin-top:24px; margin-bottom:10px;">サーバー</h3>
+  <div id="servers"></div>
+</div>
+
+<script>
+// --------------------
+// ログアウト
+// --------------------
+function logout(){
+  localStorage.removeItem("username");
+  location.href = "/login.html";
+}
+
+// --------------------
+// ナビ右上のアイコン読み込み
+// --------------------
+async function loadNavIcon(){
+  const user = localStorage.getItem("username");
+  if (!user) return;
+
+  const res = await fetch(`/api/user/profile?user=${user}`);
+  const data = await res.json();
+
+  const icon = document.getElementById("navProfileIcon");
+  icon.src = data.icon || "/icons/default.png";
+}
+
+// --------------------
+// サーバー一覧読み込み
+// --------------------
+async function loadServers(){
+  const res = await fetch("/api/servers");
+  const servers = await res.json();
+
+  const box = document.getElementById("servers");
+  box.innerHTML = "";
+
+  servers.forEach(s=>{
+    const div = document.createElement("div");
+    div.className = "server";
+    div.id = "server-" + s.id;
+
+    div.innerHTML = `
+      <a href="/board.html?id=${s.id}">${s.name}</a>
+      <button class="delete" onclick="deleteServer('${s.id}')">削除</button>
+    `;
+
+    box.appendChild(div);
+  });
+}
+
+// --------------------
+// サーバー作成
+// --------------------
+async function createServer(){
+  const name = document.getElementById("newServerName").value.trim();
+  if (!name) return alert("サーバー名を入力してください");
+
+  const res = await fetch("/api/servers", {
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body:JSON.stringify({ name })
+  });
+
+  const data = await res.json();
+  if(data.error) return alert(data.error);
+
+  document.getElementById("newServerName").value = "";
+  loadServers();
+}
+
+// --------------------
+// サーバー削除
+// --------------------
+async function deleteServer(id){
+  if(!confirm("このサーバーを削除しますか？\n投稿データもすべて削除されます。"))
+    return;
+
+  const div = document.getElementById("server-" + id);
+  div.classList.add("fade-out");
+
+  setTimeout(()=>{
+    fetch("/api/serverDelete", {
+      method:"POST",
+      headers:{ "Content-Type":"application/json" },
+      body: JSON.stringify({ id })
+    }).then(()=>{
+      div.remove();
+    });
+  }, 260);
+}
+
+// 初期ロード
+loadNavIcon();
+loadServers();
+</script>
+
+</body>
+</html>

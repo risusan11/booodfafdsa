@@ -1,0 +1,31 @@
+{
+  "d": {
+    "friends": [],
+    "requests": [
+      "mizuno"
+    ]
+  },
+  "mizuno": {
+    "friends": [],
+    "requests": []
+  },
+  "onlineUsers": [],
+  "jfie": {
+    "friends": [],
+    "requests": [
+      "mizuno"
+    ]
+  },
+  "dd": {
+    "friends": [],
+    "requests": [
+      "mizuno"
+    ]
+  },
+  "ddd": {
+    "friends": [],
+    "requests": [
+      "mizuno"
+    ]
+  }
+}

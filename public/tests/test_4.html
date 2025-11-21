@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EIKEN Grade 4 Practice Test</title>
+
+<link id="theme" rel="stylesheet" href="/css/light.css">
+<script src="/script/theme.js" defer></script>
+<script src="/script/test_core.js" defer></script>
+
+<style>
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: var(--card);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.question {
+  margin: 18px 0;
+}
+
+select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 8px;
+  font-size: 16px;
+  background: var(--input);
+  color: var(--text);
+}
+
+textarea {
+  height: 160px;
+  resize: vertical;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 30px;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+button:hover {
+  opacity: 0.9;
+}
+
+.backBtn {
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:10px;
+  background:var(--card);
+  color:var(--text);
+  border:1px solid var(--border);
+  margin:20px 0;
+  font-weight:bold;
+  text-decoration:none;
+  transition:.25s;
+  box-shadow:0 4px 16px rgba(0,0,0,0.25);
+}
+.backBtn:hover {
+  background:var(--accent);
+  color:#fff;
+  transform:translateX(-3px);
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<a href="/tests" class="backBtn">← Back</a>
+<h1>EIKEN Grade 4 – Practice Test</h1>
+
+<!-- Part 1 -->
+<h2>Part 1: Vocabulary (10 Questions)</h2>
+
+<div class="question">
+1. She ( ____ ) breakfast at 7 a.m.<br>
+<select id="q1">
+<option></option>
+<option value="eats">eats</option>
+<option value="eat">eat</option>
+<option value="eating">eating</option>
+</select>
+</div>
+
+<div class="question">
+2. I am ( ____ ) a book now.<br>
+<select id="q2">
+<option></option>
+<option value="reading">reading</option>
+<option value="read">read</option>
+<option value="reads">reads</option>
+</select>
+</div>
+
+<div class="question">
+3. This movie is ( ____ ) than that one.<br>
+<select id="q3">
+<option></option>
+<option value="more interesting">more interesting</option>
+<option value="interesting">interesting</option>
+<option value="most interesting">most interesting</option>
+</select>
+</div>
+
+<div class="question">
+4. They ( ____ ) to the zoo yesterday.<br>
+<select id="q4">
+<option></option>
+<option value="went">went</option>
+<option value="go">go</option>
+<option value="going">going</option>
+</select>
+</div>
+
+<div class="question">
+5. Do you ( ____ ) soccer?<br>
+<select id="q5">
+<option></option>
+<option value="play">play</option>
+<option value="played">played</option>
+<option value="playing">playing</option>
+</select>
+</div>
+
+<div class="question">
+6. My sister is very ( ____ ).<br>
+<select id="q6">
+<option></option>
+<option value="kind">kind</option>
+<option value="cold">cold</option>
+<option value="hard">hard</option>
+</select>
+</div>
+
+<div class="question">
+7. He ( ____ ) his homework before dinner.<br>
+<select id="q7">
+<option></option>
+<option value="finishes">finishes</option>
+<option value="finish">finish</option>
+<option value="finished">finished</option>
+</select>
+</div>
+
+<div class="question">
+8. There are many ( ____ ) in the library.<br>
+<select id="q8">
+<option></option>
+<option value="books">books</option>
+<option value="book">book</option>
+<option value="bookes">bookes</option>
+</select>
+</div>
+
+<div class="question">
+9. I usually ( ____ ) lunch at school.<br>
+<select id="q9">
+<option></option>
+<option value="have">have</option>
+<option value="has">has</option>
+<option value="having">having</option>
+</select>
+</div>
+
+<div class="question">
+10. My father ( ____ ) to work by train.<br>
+<select id="q10">
+<option></option>
+<option value="goes">goes</option>
+<option value="go">go</option>
+<option value="going">going</option>
+</select>
+</div>
+
+<!-- Part 2 -->
+<h2>Part 2: Grammar (10 Questions)</h2>
+
+<div class="question">
+11. ( ____ ) do you get up?<br>
+<select id="q11">
+<option></option>
+<option value="What time">What time</option>
+<option value="Where">Where</option>
+<option value="Who">Who</option>
+</select>
+</div>
+
+<div class="question">
+12. My mother is good ( ____ ) cooking.<br>
+<select id="q12">
+<option></option>
+<option value="at">at</option>
+<option value="in">in</option>
+<option value="for">for</option>
+</select>
+</div>
+
+<div class="question">
+13. Tom ( ____ ) tennis after school.<br>
+<select id="q13">
+<option></option>
+<option value="plays">plays</option>
+<option value="play">play</option>
+<option value="playing">playing</option>
+</select>
+</div>
+
+<div class="question">
+14. I have ( ____ ) sisters.<br>
+<select id="q14">
+<option></option>
+<option value="two">two</option>
+<option value="second">second</option>
+<option value="twice">twice</option>
+</select>
+</div>
+
+<div class="question">
+15. There ( ____ ) a computer in my room.<br>
+<select id="q15">
+<option></option>
+<option value="is">is</option>
+<option value="are">are</option>
+<option value="be">be</option>
+</select>
+</div>
+
+<div class="question">
+16. "I'm hungry." → "( ____ ) get something to eat."<br>
+<select id="q16">
+<option></option>
+<option value="Let's">Let's</option>
+<option value="Do">Do</option>
+<option value="Are">Are</option>
+</select>
+</div>
+
+<div class="question">
+17. My brother ( ____ ) TV now.<br>
+<select id="q17">
+<option></option>
+<option value="is watching">is watching</option>
+<option value="watches">watches</option>
+<option value="watch">watch</option>
+</select>
+</div>
+
+<div class="question">
+18. I want ( ____ ) to Canada someday.<br>
+<select id="q18">
+<option></option>
+<option value="to go">to go</option>
+<option value="go">go</option>
+<option value="going">going</option>
+</select>
+</div>
+
+<div class="question">
+19. She has lived here ( ____ ) 2015.<br>
+<select id="q19">
+<option></option>
+<option value="since">since</option>
+<option value="for">for</option>
+<option value="from">from</option>
+</select>
+</div>
+
+<div class="question">
+20. "Where is the station?" — "It’s ( ____ ) the post office."<br>
+<select id="q20">
+<option></option>
+<option value="next to">next to</option>
+<option value="from">from</option>
+<option value="between">between</option>
+</select>
+</div>
+
+<!-- Part 3 -->
+<h2>Part 3: Reading (6 Questions)</h2>
+
+<p><b>Passage A</b></p>
+<p>
+Ken likes music very much.  
+He plays the guitar every day and practices for two hours.  
+Next year, he wants to join a band with his friends.
+</p>
+
+<div class="question">
+21. What instrument does Ken play?<br>
+<select id="q21">
+<option></option>
+<option value="the guitar">the guitar</option>
+<option value="the piano">the piano</option>
+<option value="the violin">the violin</option>
+</select>
+</div>
+
+<div class="question">
+22. How long does Ken practice?<br>
+<select id="q22">
+<option></option>
+<option value="two hours">two hours</option>
+<option value="one hour">one hour</option>
+<option value="three hours">three hours</option>
+</select>
+</div>
+
+<div class="question">
+23. What does he want to do next year?<br>
+<select id="q23">
+<option></option>
+<option value="join a band">join a band</option>
+<option value="study abroad">study abroad</option>
+<option value="play tennis">play tennis</option>
+</select>
+</div>
+
+<p><b>Passage B</b></p>
+<p>
+Yumi enjoys cooking.  
+She learns new recipes on the Internet and cooks dinner for her family every Sunday.  
+She wants to become a chef in the future.
+</p>
+
+<div class="question">
+24. What does Yumi enjoy?<br>
+<select id="q24">
+<option></option>
+<option value="cooking">cooking</option>
+<option value="painting">painting</option>
+<option value="swimming">swimming</option>
+</select>
+</div>
+
+<div class="question">
+25. When does she cook dinner for her family?<br>
+<select id="q25">
+<option></option>
+<option value="every Sunday">every Sunday</option>
+<option value="every day">every day</option>
+<option value="once a month">once a month</option>
+</select>
+</div>
+
+<div class="question">
+26. What does she want to be?<br>
+<select id="q26">
+<option></option>
+<option value="a chef">a chef</option>
+<option value="a singer">a singer</option>
+<option value="a teacher">a teacher</option>
+</select>
+</div>
+
+<!-- Part 4 -->
+<h2>Part 4: Writing</h2>
+
+<p><b>Question:</b><br>
+Do you like studying English? Write 20–30 words.
+</p>
+
+<textarea id="writing"></textarea>
+
+<button onclick="gradeTest4()">Submit</button>
+
+<div id="result" style="margin-top:30px; font-size:20px; font-weight:bold;"></div>
+
+</div>
+</body>
+</html>
