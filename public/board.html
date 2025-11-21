@@ -6,6 +6,7 @@
 
 <link id="theme" rel="stylesheet" href="/css/light.css">
 <script src="/script/theme.js" defer></script>
+<script src="/socket.io/socket.io.js"></script>
 
 <style>
 body{
@@ -83,8 +84,8 @@ button:hover{ opacity:0.9; }
 
 <nav>
   <a href="/">掲示板一覧</a>
-  <a href="/tests">英検一覧</a>
-  <a href="/ranking">ランキング</a>
+  <a href="/tests.html">英検一覧</a>
+  <a href="/ranking.html">ランキング</a>
   <button onclick="toggleTheme()" style="margin-left:auto;">🌓 テーマ</button>
 </nav>
 
@@ -98,10 +99,14 @@ button:hover{ opacity:0.9; }
   <div id="posts"></div>
 </div>
 
-
 <script>
 const url = new URL(location.href);
 const serverId = url.searchParams.get("id");
+const username = localStorage.getItem("username") || "名無し";
+
+// WebSocket
+const socket = io();
+socket.emit("joinRoom", serverId);
 
 // アイコン一覧
 let userIcons = {};
@@ -111,9 +116,7 @@ async function loadUserIcons(){
   userIcons = await res.json();
 }
 
-// -----------------------------
-// サーバータイトル反映
-// -----------------------------
+// タイトル読み込み
 fetch("/api/servers")
   .then(r => r.json())
   .then(list => {
@@ -121,14 +124,16 @@ fetch("/api/servers")
     if (s) document.getElementById("serverTitle").innerText = s.name;
   });
 
-
-// -----------------------------
-// 投稿読み込み（アイコン付き）
-// -----------------------------
+// 通常読み込み
 async function loadPosts(){
   const res = await fetch(`/api/posts/${serverId}`);
   const posts = await res.json();
+  
+  renderPosts(posts);
+}
 
+// UIレンダリング
+function renderPosts(posts){
   const list = document.getElementById("posts");
   list.innerHTML = "";
 
@@ -141,7 +146,7 @@ async function loadPosts(){
           <div class="replyBox">
             <div style="display:flex; align-items:center; gap:8px;">
               <img src="${userIcons[r.name] || '/icons/default.png'}"
-                   style="width:30px; height:30px; border-radius:50%; object-fit:cover;">
+                   style="width:30px; height:30px; border-radius:50%;">
               <div class="name">${r.name}</div>
             </div>
             <div class="date">${r.date}</div>
@@ -154,8 +159,7 @@ async function loadPosts(){
 
     let imgHTML = "";
     if (p.image){
-      imgHTML = `<img src="${p.image}"
-             style="max-width:100%; border-radius:8px; margin-top:8px;">`;
+      imgHTML = `<img src="${p.image}" style="max-width:100%; border-radius:8px; margin-top:8px;">`;
     }
 
     list.innerHTML += `
@@ -163,7 +167,7 @@ async function loadPosts(){
 
         <div style="display:flex; align-items:center; gap:12px;">
           <img src="${userIcons[p.name] || '/icons/default.png'}"
-               style="width:48px; height:48px; border-radius:50%; object-fit:cover;">
+               style="width:48px; height:48px; border-radius:50%;">
           <div>
             <div class="name">${p.name}</div>
             <div class="date">${p.date}</div>
@@ -187,16 +191,14 @@ async function loadPosts(){
   });
 }
 
-
-// -----------------------------
 // 投稿送信
-// -----------------------------
 async function sendPost(){
   const text = document.getElementById("text").value.trim();
   const fileInput = document.getElementById("imageFile");
-  let imageURL = null;
 
   if(!text && fileInput.files.length === 0) return;
+
+  let imageURL = null;
 
   if (fileInput.files.length > 0){
     const fd = new FormData();
@@ -206,88 +208,83 @@ async function sendPost(){
       method: "POST",
       body: fd
     });
-    const uploadData = await uploadRes.json();
 
-    if (uploadData.ok){
-      imageURL = uploadData.url;
-    }
+    const uploadData = await uploadRes.json();
+    if (uploadData.ok) imageURL = uploadData.url;
   }
 
   await fetch(`/api/posts/${serverId}`,{
     method:"POST",
     headers:{ "Content-Type":"application/json" },
-    body: JSON.stringify({
-      name: localStorage.getItem("username") || "名無し",
-      text,
-      image: imageURL
-    })
+    body: JSON.stringify({ name: username, text, image: imageURL })
   });
 
   document.getElementById("text").value = "";
   fileInput.value = "";
-  loadUserIcons();
-  loadPosts();
 }
 
-
-// -----------------------------
 // 返信送信
-// -----------------------------
 async function sendReply(postId){
   const txt = document.getElementById(`replyText-${postId}`).value.trim();
   if(!txt) return;
 
-  await fetch(`/api/posts/reply/${serverId}`, {
+  await fetch(`/api/posts/reply/${serverId}`,{
     method:"POST",
     headers:{ "Content-Type":"application/json" },
-    body: JSON.stringify({
-      postId,
-      name: localStorage.getItem("username") || "名無し",
-      text: txt
-    })
+    body: JSON.stringify({ postId, name: username, text: txt })
   });
-
-  loadUserIcons();
-  loadPosts();
 }
 
+// UI
 function showReplyBox(id){
   document.getElementById("reply-"+id).style.display="block";
 }
 
-
-// -----------------------------
-// 投稿削除
-// -----------------------------
+// 削除
 async function deletePost(id){
   if(!confirm("本当に削除する？")) return;
 
   await fetch(`/api/posts/delete/${serverId}`,{
     method:"POST",
     headers:{ "Content-Type":"application/json" },
-    body:JSON.stringify({ id })
+    body: JSON.stringify({ id })
   });
-
-  loadPosts();
 }
 
-
-// -----------------------------
 // 返信削除
-// -----------------------------
 async function deleteReply(postId, replyId){
-  await fetch(`/api/posts/delete/${serverId}`, {
+  await fetch(`/api/posts/delete/${serverId}`,{
     method:"POST",
     headers:{ "Content-Type":"application/json" },
-    body: JSON.stringify({
-      id: postId,
-      replyId
-    })
+    body: JSON.stringify({ id: postId, replyId })
   });
-
-  loadPosts();
 }
 
+/* ------------------------------
+  リアルタイム受信処理
+------------------------------ */
+
+socket.on("newPost", async (post)=>{
+  await loadUserIcons();
+  await loadPosts();
+});
+
+socket.on("newReply", async ()=>{
+  await loadUserIcons();
+  await loadPosts();
+});
+
+socket.on("likeUpdate", async ()=>{
+  await loadPosts();
+});
+
+socket.on("deletePost", ()=>{
+  loadPosts();
+});
+
+socket.on("deleteReply", ()=>{
+  loadPosts();
+});
 
 // 初期読み込み
 (async ()=>{
@@ -298,3 +295,8 @@ async function deleteReply(postId, replyId){
 
 </body>
 </html>
+
+
+</body>
+</html>
+
